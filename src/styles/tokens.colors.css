@@ -1,0 +1,69 @@
+/*
+  Soul Garden — Color Tokens
+  ==========================
+  Palette from the product brief: deep violet, midnight blue, blush pink,
+  lavender, ivory, champagne gold. Kept restrained and layered rather than
+  saturated — this is a cinematic, editorial palette, not a playful one.
+
+  Naming convention:
+    --color-<family>-<step>   50 (lightest) -> 900 (darkest)
+    --color-<role>            semantic aliases used by components
+*/
+
+:root {
+  /* Deep violet — primary atmosphere, backgrounds, depth */
+  --color-violet-900: #1B1633;
+  --color-violet-700: #2C2249;
+  --color-violet-500: #443665;
+  --color-violet-300: #6E5C93;
+  --color-violet-100: #E4DCF4;
+
+  /* Midnight blue — secondary depth, night-sky moments */
+  --color-midnight-900: #10142B;
+  --color-midnight-700: #1B2140;
+  --color-midnight-500: #2C365E;
+
+  /* Blush pink — warmth, emotional accents, Luna's glow */
+  --color-blush-500: #E8A9B0;
+  --color-blush-300: #F0C7CC;
+  --color-blush-100: #FBE9EB;
+
+  /* Lavender — soft accents, secondary UI, hover states */
+  --color-lavender-500: #B9A8D9;
+  --color-lavender-300: #D6CBEA;
+  --color-lavender-100: #F1ECF9;
+
+  /* Ivory — light surfaces, reading backgrounds */
+  --color-ivory-100: #FBF8F2;
+  --color-ivory-50: #FEFDFB;
+
+  /* Champagne gold — rare, precious accents only (progress, unlocks) */
+  --color-gold-500: #C9A15A;
+  --color-gold-300: #DDBE84;
+  --color-gold-100: #F3E7CE;
+
+  /* Neutrals for text on ivory surfaces */
+  --color-ink-900: #241F35;
+  --color-ink-600: #52496B;
+  --color-ink-400: #857BA0;
+
+  /* ---- Semantic aliases ---- */
+  --color-bg-primary: var(--color-violet-900);
+  --color-bg-secondary: var(--color-midnight-900);
+  --color-bg-surface: var(--color-ivory-100);
+  --color-bg-surface-raised: var(--color-ivory-50);
+
+  --color-text-on-dark: var(--color-ivory-100);
+  --color-text-on-dark-muted: var(--color-lavender-300);
+  --color-text-on-light: var(--color-ink-900);
+  --color-text-on-light-muted: var(--color-ink-600);
+
+  --color-accent-primary: var(--color-blush-500);
+  --color-accent-secondary: var(--color-lavender-500);
+  --color-accent-precious: var(--color-gold-500);
+
+  --color-border-subtle: rgba(233, 224, 250, 0.14);
+  --color-border-subtle-on-light: rgba(36, 31, 53, 0.10);
+
+  --color-focus-ring: var(--color-gold-300);
+}

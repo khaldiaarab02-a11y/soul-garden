@@ -1,0 +1,57 @@
+/*
+  Soul Garden — Spacing, Radius, Shadow & Motion Tokens
+  =======================================================
+*/
+
+:root {
+  /* ---- Spacing (4px base scale) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 9rem;
+
+  /* ---- Radii ----
+     Restrained on purpose — the brief explicitly warns against
+     "excessive rounded rectangles." Soft but not bubbly. */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows ----
+     Soft, low-contrast, atmospheric — never a hard drop shadow. */
+  --shadow-soft-sm: 0 2px 12px rgba(16, 12, 33, 0.18);
+  --shadow-soft-md: 0 8px 28px rgba(16, 12, 33, 0.24);
+  --shadow-soft-lg: 0 18px 60px rgba(16, 12, 33, 0.32);
+  --shadow-glow-blush: 0 0 32px rgba(232, 169, 176, 0.25);
+  --shadow-glow-gold: 0 0 24px rgba(201, 161, 90, 0.22);
+
+  /* ---- Motion ----
+     Slow, organic, cinematic — never bouncy or abrupt. */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.45, 0, 0.25, 1);
+
+  --duration-instant: 120ms;
+  --duration-quick: 240ms;
+  --duration-normal: 480ms;
+  --duration-slow: 900ms;
+  --duration-ambient: 6000ms;
+
+  /* ---- Layout ---- */
+  --container-max-width: 1200px;
+  --container-narrow-width: 720px;
+
+  /* ---- Z-index scale ---- */
+  --z-base: 0;
+  --z-scene-layer: 10;
+  --z-character: 20;
+  --z-ui: 30;
+  --z-overlay: 40;
+  --z-modal: 50;
+}
