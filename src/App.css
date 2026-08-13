@@ -10,22 +10,56 @@
   padding: 40px 20px;
 
   background:
-    radial-gradient(circle at 50% 18%,
-      rgba(214, 174, 235, 0.24),
-      transparent 38%),
-    radial-gradient(circle at 20% 80%,
-      rgba(204, 128, 173, 0.14),
-      transparent 42%),
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(218, 190, 239, 0.22),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 50% 65%,
+      rgba(115, 77, 139, 0.18),
+      transparent 50%
+    ),
     linear-gradient(
       180deg,
-      #090714 0%,
-      #120d20 34%,
-      #211532 68%,
-      #0b0813 100%
+      #080612 0%,
+      #100b1c 35%,
+      #1d1230 67%,
+      #080611 100%
     );
 
   color: #fff8ff;
   text-align: center;
+}
+
+/* =========================
+   الضوء العام
+========================= */
+
+.atmosphere-glow {
+  position: absolute;
+
+  top: 2%;
+  left: 50%;
+
+  width: 420px;
+  height: 420px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(225, 197, 241, 0.12),
+      transparent 68%
+    );
+
+  filter: blur(15px);
+
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* =========================
@@ -34,46 +68,49 @@
 
 .moon {
   position: absolute;
-  top: 9%;
+
+  top: 8%;
   left: 50%;
 
-  width: 92px;
-  height: 92px;
+  width: 94px;
+  height: 94px;
 
   transform: translateX(-50%);
+
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle at 35% 30%,
-      #fffdfd 0%,
-      #f7eefa 45%,
-      #dfc9eb 75%,
-      #c5a9d5 100%
+      #ffffff 0%,
+      #f9f0fc 42%,
+      #e2cce9 78%,
+      #c6a9d1 100%
     );
 
   box-shadow:
-    0 0 25px rgba(245, 226, 255, 0.45),
-    0 0 70px rgba(214, 177, 239, 0.25);
+    0 0 25px rgba(255, 237, 255, 0.48),
+    0 0 80px rgba(218, 183, 237, 0.25);
 
   z-index: 2;
 }
 
 .moon-glow {
   position: absolute;
-  inset: -35px;
+
+  inset: -45px;
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(239, 213, 250, 0.22),
-      rgba(221, 183, 239, 0.08) 40%,
-      transparent 70%
+      rgba(242, 218, 252, 0.18),
+      transparent 68%
     );
 
-  filter: blur(8px);
+  filter: blur(10px);
+
   z-index: -1;
 }
 
@@ -81,50 +118,141 @@
    النجوم
 ========================= */
 
-.stars {
+.sky {
   position: absolute;
   inset: 0;
-  z-index: 1;
+
+  z-index: 2;
   pointer-events: none;
 }
 
-.star {
+.real-star {
   position: absolute;
 
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
 
   border-radius: 50%;
 
-  background: #fff5ff;
+  background: #fff8ff;
 
   box-shadow:
-    0 0 8px rgba(255, 230, 255, 0.9);
+    0 0 5px rgba(255, 240, 255, 0.9),
+    0 0 12px rgba(226, 190, 240, 0.6);
 
-  animation: twinkle 4s ease-in-out infinite;
+  animation: starPulse 4s ease-in-out infinite;
 }
 
-.star-1 { top: 12%; right: 17%; }
-.star-2 { top: 18%; left: 19%; animation-delay: .7s; }
-.star-3 { top: 25%; right: 31%; animation-delay: 1.4s; }
-.star-4 { top: 30%; left: 11%; animation-delay: 2s; }
-.star-5 { top: 16%; right: 43%; animation-delay: 2.6s; }
-.star-6 { top: 34%; right: 9%; animation-delay: 1.1s; }
-.star-7 { top: 38%; left: 27%; animation-delay: 3s; }
-.star-8 { top: 27%; left: 44%; animation-delay: 1.8s; }
-.star-9 { top: 10%; left: 38%; animation-delay: .4s; }
-.star-10 { top: 42%; right: 23%; animation-delay: 2.3s; }
+.real-star::before,
+.real-star::after {
+  content: "";
 
-@keyframes twinkle {
-  0%, 100% {
-    opacity: .35;
-    transform: scale(.8);
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(255, 245, 255, 0.7);
+}
+
+.real-star::before {
+  width: 1px;
+  height: 13px;
+}
+
+.real-star::after {
+  width: 13px;
+  height: 1px;
+}
+
+.s1 { top: 13%; left: 16%; }
+.s2 { top: 19%; left: 28%; transform: scale(.7); }
+.s3 { top: 27%; left: 11%; transform: scale(.55); }
+.s4 { top: 22%; right: 18%; }
+.s5 { top: 31%; right: 28%; transform: scale(.65); }
+.s6 { top: 15%; right: 37%; transform: scale(.5); }
+.s7 { top: 35%; left: 32%; transform: scale(.55); }
+.s8 { top: 39%; right: 12%; transform: scale(.6); }
+.s9 { top: 11%; left: 43%; transform: scale(.55); }
+.s10 { top: 28%; right: 42%; transform: scale(.75); }
+.s11 { top: 42%; left: 19%; transform: scale(.5); }
+.s12 { top: 37%; right: 38%; transform: scale(.45); }
+
+@keyframes starPulse {
+  0%,
+  100% {
+    opacity: 0.35;
   }
 
   50% {
     opacity: 1;
-    transform: scale(1.5);
   }
+}
+
+/* =========================
+   الغابة البعيدة
+========================= */
+
+.forest-svg {
+  position: absolute;
+
+  pointer-events: none;
+
+  fill: #120d20;
+}
+
+.forest-distant {
+  left: 0;
+  bottom: 21%;
+
+  width: 100%;
+  height: 32%;
+
+  opacity: 0.75;
+
+  filter: blur(0.5px);
+}
+
+.forest-left,
+.forest-right {
+  bottom: -2%;
+
+  width: 42%;
+  height: 70%;
+
+  z-index: 3;
+}
+
+.forest-left {
+  left: -7%;
+}
+
+.forest-right {
+  right: -7%;
+}
+
+.forest-left path:not(.leaf-mass),
+.forest-right path:not(.leaf-mass) {
+  fill: none;
+
+  stroke: #090711;
+  stroke-width: 24;
+
+  stroke-linecap: round;
+}
+
+.leaf-mass {
+  fill: #0e0918;
+
+  filter: drop-shadow(
+    0 0 14px rgba(101, 70, 120, 0.12)
+  );
+}
+
+.leaf-mass.dark {
+  fill: #080610;
 }
 
 /* =========================
@@ -135,95 +263,169 @@
   position: absolute;
 
   left: -15%;
+
   width: 130%;
 
   border-radius: 50%;
 
   pointer-events: none;
 
-  filter: blur(25px);
+  filter: blur(28px);
+
+  z-index: 4;
 }
 
-.mist-back {
-  bottom: 28%;
-  height: 22%;
+.mist-one {
+  bottom: 26%;
+
+  height: 18%;
 
   background:
     radial-gradient(
       ellipse,
-      rgba(202, 177, 218, .13),
+      rgba(216, 193, 225, 0.12),
       transparent 70%
     );
 }
 
-.mist-front {
-  bottom: 8%;
-  height: 25%;
+.mist-two {
+  bottom: 9%;
+
+  height: 24%;
 
   background:
     radial-gradient(
       ellipse,
-      rgba(231, 191, 217, .12),
+      rgba(224, 188, 218, 0.13),
       transparent 68%
     );
 }
 
 /* =========================
-   الغابة
+   الممر
 ========================= */
 
-.forest {
+.garden-path {
   position: absolute;
-  left: -5%;
-  width: 110%;
 
-  display: flex;
-  align-items: flex-end;
+  bottom: -15%;
+  left: 50%;
+
+  width: 55%;
+  height: 65%;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(218, 187, 229, 0.02),
+      rgba(219, 183, 231, 0.12),
+      rgba(239, 204, 235, 0.22)
+    );
+
+  clip-path: polygon(
+    47% 0%,
+    53% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  filter: blur(1px);
+
+  z-index: 5;
+}
+
+.path-light {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 3px;
+  height: 100%;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(255, 226, 250, 0.28),
+      transparent
+    );
+
+  filter: blur(4px);
+}
+
+/* =========================
+   النباتات الأمامية
+========================= */
+
+.foreground-plants {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -2%;
+
+  height: 25%;
+
+  z-index: 7;
 
   pointer-events: none;
 }
 
-.forest span {
-  display: block;
+.plant {
+  position: absolute;
 
-  width: 0;
-  height: 0;
-
-  border-left: 42px solid transparent;
-  border-right: 42px solid transparent;
-
-  border-bottom: 170px solid #120d20;
-}
-
-.forest-back {
-  bottom: 23%;
-  height: 30%;
-  justify-content: space-around;
-
-  opacity: .75;
-}
-
-.forest-back span:nth-child(even) {
-  border-bottom-height: 0;
-  transform: scale(.75);
-}
-
-.forest-front {
   bottom: 0;
-  height: 25%;
 
-  justify-content: space-between;
-
-  opacity: .95;
+  width: 80px;
+  height: 130px;
 }
 
-.forest-front span {
-  border-left-width: 55px;
-  border-right-width: 55px;
-  border-bottom-width: 190px;
+.plant::before,
+.plant::after {
+  content: "";
 
-  border-bottom-color: #0b0813;
+  position: absolute;
+
+  bottom: 0;
+
+  width: 38px;
+  height: 110px;
+
+  border-radius: 100% 0 100% 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #151022,
+      #090711
+    );
+
+  transform-origin: bottom;
 }
+
+.plant::before {
+  left: 8px;
+
+  transform: rotate(-24deg);
+}
+
+.plant::after {
+  right: 8px;
+
+  transform: rotate(24deg) scaleX(-1);
+}
+
+.p1 { left: -1%; transform: scale(1.2); }
+.p2 { left: 15%; transform: scale(.8); }
+.p3 { left: 31%; transform: scale(.6); }
+.p4 { right: 31%; transform: scale(.6); }
+.p5 { right: 15%; transform: scale(.85); }
+.p6 { right: -1%; transform: scale(1.25); }
 
 /* =========================
    اليراعات
@@ -231,9 +433,11 @@
 
 .fireflies {
   position: absolute;
+
   inset: 0;
 
-  z-index: 3;
+  z-index: 8;
+
   pointer-events: none;
 }
 
@@ -245,113 +449,35 @@
 
   border-radius: 50%;
 
-  background: #f8d9ff;
+  background: #f9dcff;
 
   box-shadow:
-    0 0 12px rgba(245, 201, 255, .9);
+    0 0 8px #f7d5ff,
+    0 0 18px rgba(238, 181, 255, 0.7);
 
-  animation: float 7s ease-in-out infinite;
+  animation: fireflyFloat 7s ease-in-out infinite;
 }
 
-.fireflies span:nth-child(1) {
-  left: 17%;
-  bottom: 28%;
-}
+.fireflies span:nth-child(1) { left: 15%; bottom: 27%; }
+.fireflies span:nth-child(2) { left: 27%; bottom: 19%; animation-delay: 1s; }
+.fireflies span:nth-child(3) { left: 38%; bottom: 29%; animation-delay: 2s; }
+.fireflies span:nth-child(4) { right: 24%; bottom: 26%; animation-delay: 3s; }
+.fireflies span:nth-child(5) { right: 14%; bottom: 18%; animation-delay: 1.5s; }
+.fireflies span:nth-child(6) { right: 35%; bottom: 20%; animation-delay: 2.5s; }
+.fireflies span:nth-child(7) { left: 45%; bottom: 15%; animation-delay: 3.5s; }
+.fireflies span:nth-child(8) { right: 45%; bottom: 31%; animation-delay: 4s; }
 
-.fireflies span:nth-child(2) {
-  left: 30%;
-  bottom: 20%;
-  animation-delay: 1s;
-}
-
-.fireflies span:nth-child(3) {
-  right: 22%;
-  bottom: 30%;
-  animation-delay: 2s;
-}
-
-.fireflies span:nth-child(4) {
-  right: 34%;
-  bottom: 18%;
-  animation-delay: 3s;
-}
-
-.fireflies span:nth-child(5) {
-  left: 42%;
-  bottom: 25%;
-  animation-delay: 1.5s;
-}
-
-.fireflies span:nth-child(6) {
-  right: 12%;
-  bottom: 22%;
-  animation-delay: 2.5s;
-}
-
-.fireflies span:nth-child(7) {
-  left: 10%;
-  bottom: 16%;
-  animation-delay: 3.5s;
-}
-
-.fireflies span:nth-child(8) {
-  right: 44%;
-  bottom: 14%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% {
+@keyframes fireflyFloat {
+  0%,
+  100% {
     transform: translateY(0);
-    opacity: .35;
+    opacity: 0.25;
   }
 
   50% {
-    transform: translateY(-25px);
+    transform: translateY(-24px);
     opacity: 1;
   }
-}
-
-/* =========================
-   الممر السحري
-========================= */
-
-.magic-path {
-  position: absolute;
-
-  bottom: -12%;
-  left: 50%;
-
-  width: 45%;
-  height: 58%;
-
-  transform:
-    translateX(-50%)
-    perspective(300px)
-    rotateX(45deg);
-
-  transform-origin: bottom center;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(218, 181, 235, .03),
-      rgba(231, 195, 239, .18)
-    );
-
-  clip-path: polygon(
-    43% 0,
-    57% 0,
-    100% 100%,
-    0 100%
-  );
-
-  filter: blur(2px);
-
-  box-shadow:
-    0 0 35px rgba(225, 185, 239, .12);
-
-  z-index: 1;
 }
 
 /* =========================
@@ -360,7 +486,8 @@
 
 .hero {
   position: relative;
-  z-index: 5;
+
+  z-index: 10;
 
   width: min(720px, 100%);
 
@@ -396,7 +523,7 @@
   color: transparent;
 
   text-shadow:
-    0 0 35px rgba(224, 182, 239, .18);
+    0 0 35px rgba(224, 182, 239, 0.18);
 }
 
 .description {
@@ -412,7 +539,7 @@
 }
 
 .start-button {
-  border: 1px solid rgba(255, 235, 255, .35);
+  border: 1px solid rgba(255, 235, 255, 0.35);
 
   border-radius: 999px;
 
@@ -431,64 +558,7 @@
   font-weight: 700;
 
   box-shadow:
-    0 10px 35px rgba(218, 178, 232, .20);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
-}
-
-.start-button:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 15px 45px rgba(218, 178, 232, .35);
-}
-
-/* =========================
-   الهاتف
-========================= */
-
-@media (max-width: 480px) {
-  .home-page {
-    padding: 28px 16px;
-  }
-
-  .moon {
-    width: 72px;
-    height: 72px;
-    top: 8%;
-  }
-
-  .moon-glow {
-    inset: -28px;
-  }
-
-  .hero {
-    padding: 40px 12px;
-  }
-
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: 3px;
-  }
-
-  .description {
-    margin-top: 22px;
-  }
-
-  .magic-path {
-    width: 65%;
-  }
-                     }      #f8def3,
-      #dcbbe9
-    );
-
-  font-size: 17px;
-  font-weight: 700;
-
-  box-shadow:
-    0 10px 35px rgba(218, 178, 232, 0.20);
+    0 10px 35px rgba(218, 178, 232, 0.2);
 
   transition:
     transform 0.25s ease,
@@ -502,19 +572,44 @@
     0 15px 45px rgba(218, 178, 232, 0.35);
 }
 
-.start-button:active {
-  transform: translateY(0);
-}
+/* =========================
+   الهاتف
+========================= */
 
-/* الهاتف */
-
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .home-page {
-    padding: 28px 16px;
+    min-height: 100svh;
+    padding: 24px 14px;
+  }
+
+  .moon {
+    width: 72px;
+    height: 72px;
+    top: 8%;
+  }
+
+  .moon-glow {
+    inset: -30px;
+  }
+
+  .forest-left,
+  .forest-right {
+    width: 48%;
+    height: 55%;
+  }
+
+  .forest-distant {
+    bottom: 20%;
+    height: 25%;
+  }
+
+  .garden-path {
+    width: 75%;
+    height: 58%;
   }
 
   .hero {
-    padding: 40px 12px;
+    padding: 35px 12px;
   }
 
   .eyebrow {
@@ -523,76 +618,23 @@
   }
 
   .description {
-    margin-top: 22px;
+    margin-top: 20px;
   }
 
   .start-button {
     padding: 14px 30px;
   }
-  }
-/* القمر */
-
-.moon {
-  position: absolute;
-
-  top: 9%;
-  left: 50%;
-
-  width: 92px;
-  height: 92px;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      #fffdfd 0%,
-      #f7eefa 45%,
-      #dfc9eb 75%,
-      #c5a9d5 100%
-    );
-
-  box-shadow:
-    0 0 25px rgba(245, 226, 255, 0.45),
-    0 0 70px rgba(214, 177, 239, 0.25);
-
-  z-index: 1;
 }
 
-/* توهج القمر */
+/* تقليل الحركة لمن يفضل ذلك */
 
-.moon-glow {
-  position: absolute;
-
-  inset: -35px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(239, 213, 250, 0.20) 0%,
-      rgba(221, 183, 239, 0.10) 35%,
-      transparent 70%
-    );
-
-  filter: blur(8px);
-
-  z-index: -1;
-}
-
-/* حجم القمر على الهاتف */
-
-@media (max-width: 480px) {
-  .moon {
-    width: 72px;
-    height: 72px;
-    top: 8%;
+@media (prefers-reduced-motion: reduce) {
+  .real-star,
+  .fireflies span {
+    animation: none;
   }
 
-  .moon-glow {
-    inset: -28px;
+  .start-button {
+    transition: none;
   }
 }
