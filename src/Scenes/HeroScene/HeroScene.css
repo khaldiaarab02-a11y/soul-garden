@@ -1,0 +1,19 @@
+.sg-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-7);
+  padding-block: var(--space-6);
+}
+
+@media (min-width: 600px) {
+  .sg-hero {
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sg-hero {
+    gap: var(--space-9);
+  }
+}
