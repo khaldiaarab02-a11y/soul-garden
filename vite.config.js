@@ -6,6 +6,7 @@ import react from '@vitejs/plugin-react';
 // asset-handling plugins (audio, image optimization) as the
 // audio/ and data/ systems grow.
 export default defineConfig({
+  base: '/soul-garden/',
   plugins: [react()],
   server: {
     port: 5173,
