@@ -1,683 +1,319 @@
-.home-page {
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+button {
+  font: inherit;
+}
+
+.soul-garden {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
+  isolation: isolate;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 40px 20px;
-
-  background:
-    radial-gradient(
-      circle at 50% 18%,
-      rgba(218, 190, 239, 0.22),
-      transparent 34%
-    ),
-    radial-gradient(
-      ellipse at 50% 65%,
-      rgba(115, 77, 139, 0.18),
-      transparent 50%
-    ),
-    linear-gradient(
-      180deg,
-      #080612 0%,
-      #100b1c 35%,
-      #1d1230 67%,
-      #080611 100%
-    );
+  display: grid;
+  place-items: center;
 
   color: #fff8ff;
-  text-align: center;
-}
-
-/* =========================
-   الضوء العام
-========================= */
-
-.atmosphere-glow {
-  position: absolute;
-
-  top: 2%;
-  left: 50%;
-
-  width: 420px;
-  height: 420px;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
   background:
-    radial-gradient(
-      circle,
-      rgba(225, 197, 241, 0.12),
-      transparent 68%
-    );
-
-  filter: blur(15px);
-
-  pointer-events: none;
-  z-index: 0;
+    radial-gradient(circle at 50% 18%, #3b2850 0%, transparent 30%),
+    radial-gradient(circle at 50% 75%, #24142f 0%, transparent 45%),
+    linear-gradient(180deg, #090611 0%, #120b1b 48%, #08060d 100%);
 }
 
-/* =========================
-   القمر
-========================= */
+/* Moon */
 
 .moon {
   position: absolute;
-
   top: 8%;
   left: 50%;
-
-  width: 94px;
-  height: 94px;
-
+  width: 92px;
+  height: 92px;
   transform: translateX(-50%);
-
   border-radius: 50%;
+  z-index: 2;
 
   background:
-    radial-gradient(
-      circle at 35% 30%,
-      #ffffff 0%,
-      #f9f0fc 42%,
-      #e2cce9 78%,
-      #c6a9d1 100%
-    );
-
+    radial-gradient(circle at 35% 30%, #fff, #f2e5f5 55%, #d3b9d8);
   box-shadow:
-    0 0 25px rgba(255, 237, 255, 0.48),
-    0 0 80px rgba(218, 183, 237, 0.25);
-
-  z-index: 2;
+    0 0 25px #f4ddfa88,
+    0 0 90px #d9b4e044;
 }
 
 .moon-glow {
   position: absolute;
-
   inset: -45px;
-
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(242, 218, 252, 0.18),
-      transparent 68%
-    );
-
-  filter: blur(10px);
-
-  z-index: -1;
+  background: #eacff522;
+  filter: blur(25px);
 }
 
-/* =========================
-   النجوم
-========================= */
+/* Stars */
 
-.sky {
+.stars {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  opacity: .85;
 
-  z-index: 2;
-  pointer-events: none;
+  background-image:
+    radial-gradient(circle, #fff 1px, transparent 1.5px),
+    radial-gradient(circle, #f1dfff 1px, transparent 1.5px),
+    radial-gradient(circle, #fff 1px, transparent 1.5px);
+
+  background-size:
+    140px 130px,
+    210px 190px,
+    280px 240px;
+
+  background-position:
+    20px 30px,
+    80px 90px,
+    150px 20px;
 }
 
-.real-star {
+/* Forest */
+
+.forest {
   position: absolute;
-
-  width: 4px;
-  height: 4px;
-
-  border-radius: 50%;
-
-  background: #fff8ff;
-
-  box-shadow:
-    0 0 5px rgba(255, 240, 255, 0.9),
-    0 0 12px rgba(226, 190, 240, 0.6);
-
-  animation: starPulse 4s ease-in-out infinite;
-}
-
-.real-star::before,
-.real-star::after {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  background: rgba(255, 245, 255, 0.7);
-}
-
-.real-star::before {
-  width: 1px;
-  height: 13px;
-}
-
-.real-star::after {
-  width: 13px;
-  height: 1px;
-}
-
-.s1 { top: 13%; left: 16%; }
-.s2 { top: 19%; left: 28%; transform: scale(.7); }
-.s3 { top: 27%; left: 11%; transform: scale(.55); }
-.s4 { top: 22%; right: 18%; }
-.s5 { top: 31%; right: 28%; transform: scale(.65); }
-.s6 { top: 15%; right: 37%; transform: scale(.5); }
-.s7 { top: 35%; left: 32%; transform: scale(.55); }
-.s8 { top: 39%; right: 12%; transform: scale(.6); }
-.s9 { top: 11%; left: 43%; transform: scale(.55); }
-.s10 { top: 28%; right: 42%; transform: scale(.75); }
-.s11 { top: 42%; left: 19%; transform: scale(.5); }
-.s12 { top: 37%; right: 38%; transform: scale(.45); }
-
-@keyframes starPulse {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-/* =========================
-   الغابة البعيدة
-========================= */
-
-.forest-svg {
-  position: absolute;
-
-  pointer-events: none;
-
-  fill: #120d20;
-}
-
-.forest-distant {
-  left: 0;
-  bottom: 21%;
-
-  width: 100%;
-  height: 32%;
-
-  opacity: 0.75;
-
-  filter: blur(0.5px);
-}
-
-.forest-left,
-.forest-right {
-  bottom: -2%;
-
-  width: 42%;
-  height: 70%;
-
   z-index: 3;
+  bottom: 10%;
+  width: 45%;
+  height: 48%;
+
+  background:
+    radial-gradient(ellipse at 20% 75%, #110b18 0 25%, transparent 26%),
+    radial-gradient(ellipse at 45% 55%, #160e20 0 30%, transparent 31%),
+    radial-gradient(ellipse at 75% 70%, #0d0914 0 30%, transparent 31%);
+}
+
+.forest-back {
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 35%;
+  bottom: 24%;
+  opacity: .75;
+
+  background:
+    linear-gradient(160deg, transparent 45%, #0d0915 46% 60%, transparent 61%),
+    linear-gradient(20deg, transparent 45%, #120b1b 46% 60%, transparent 61%);
 }
 
 .forest-left {
-  left: -7%;
+  left: -8%;
 }
 
 .forest-right {
-  right: -7%;
+  right: -8%;
+  transform: scaleX(-1);
 }
 
-.forest-left path:not(.leaf-mass),
-.forest-right path:not(.leaf-mass) {
-  fill: none;
-
-  stroke: #090711;
-  stroke-width: 24;
-
-  stroke-linecap: round;
-}
-
-.leaf-mass {
-  fill: #0e0918;
-
-  filter: drop-shadow(
-    0 0 14px rgba(101, 70, 120, 0.12)
-  );
-}
-
-.leaf-mass.dark {
-  fill: #080610;
-}
-
-/* =========================
-   الضباب
-========================= */
+/* Mist */
 
 .mist {
   position: absolute;
-
-  left: -15%;
-
-  width: 130%;
-
+  left: -10%;
+  width: 120%;
   border-radius: 50%;
-
-  pointer-events: none;
-
-  filter: blur(28px);
-
-  z-index: 4;
-}
-
-.mist-one {
-  bottom: 26%;
-
-  height: 18%;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(216, 193, 225, 0.12),
-      transparent 70%
-    );
-}
-
-.mist-two {
-  bottom: 9%;
-
-  height: 24%;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(224, 188, 218, 0.13),
-      transparent 68%
-    );
-}
-
-/* =========================
-   الممر
-========================= */
-
-.garden-path {
-  position: absolute;
-
-  bottom: -15%;
-  left: 50%;
-
-  width: 55%;
-  height: 65%;
-
-  transform: translateX(-50%);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(218, 187, 229, 0.02),
-      rgba(219, 183, 231, 0.12),
-      rgba(239, 204, 235, 0.22)
-    );
-
-  clip-path: polygon(
-    47% 0%,
-    53% 0%,
-    100% 100%,
-    0% 100%
-  );
-
-  filter: blur(1px);
-
+  filter: blur(35px);
   z-index: 5;
 }
 
-.path-light {
+.mist-1 {
+  bottom: 25%;
+  height: 17%;
+  background: #e7d4ed16;
+}
+
+.mist-2 {
+  bottom: 8%;
+  height: 20%;
+  background: #d9b8e51b;
+}
+
+/* Path */
+
+.garden-path {
   position: absolute;
-
+  bottom: -20%;
   left: 50%;
-  top: 0;
-
-  width: 3px;
-  height: 100%;
-
+  width: 55%;
+  height: 65%;
   transform: translateX(-50%);
+  z-index: 4;
 
   background:
     linear-gradient(
       180deg,
       transparent,
-      rgba(255, 226, 250, 0.28),
-      transparent
+      #d8bce51a 35%,
+      #e8cfee26
     );
 
-  filter: blur(4px);
+  clip-path: polygon(
+    47% 0,
+    53% 0,
+    100% 100%,
+    0 100%
+  );
+
+  filter: blur(1px);
 }
 
-/* =========================
-   النباتات الأمامية
-========================= */
+/* Hero */
 
-.foreground-plants {
-  position: absolute;
+.hero-content {
+  position: relative;
+  z-index: 10;
 
-  left: 0;
-  right: 0;
-  bottom: -2%;
+  width: min(650px, 90%);
+  text-align: center;
 
-  height: 25%;
+  margin-top: -5vh;
 
-  z-index: 7;
-
-  pointer-events: none;
+  animation: reveal 1.2s ease both;
 }
 
-.plant {
-  position: absolute;
+.hero-eyebrow {
+  margin: 0 0 18px;
 
-  bottom: 0;
-
-  width: 80px;
-  height: 130px;
+  color: #e5c8ec;
+  font-size: 14px;
+  letter-spacing: 4px;
 }
 
-.plant::before,
-.plant::after {
-  content: "";
+.hero-content h1 {
+  margin: 0;
 
-  position: absolute;
+  display: flex;
+  flex-direction: column;
 
-  bottom: 0;
+  font-size: clamp(64px, 13vw, 110px);
+  line-height: .9;
+  font-weight: 500;
 
-  width: 38px;
-  height: 110px;
+  background: linear-gradient(
+    135deg,
+    #fff,
+    #f0d9f5 50%,
+    #d3a9d9
+  );
 
-  border-radius: 100% 0 100% 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #151022,
-      #090711
-    );
-
-  transform-origin: bottom;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.plant::before {
-  left: 8px;
-
-  transform: rotate(-24deg);
+.hero-content h1 span {
+  font-weight: 700;
 }
 
-.plant::after {
-  right: 8px;
+.hero-description {
+  max-width: 480px;
+  margin: 30px auto 34px;
 
-  transform: rotate(24deg) scaleX(-1);
+  color: #dfd0e4;
+  font-size: 19px;
+  line-height: 1.9;
 }
 
-.p1 { left: -1%; transform: scale(1.2); }
-.p2 { left: 15%; transform: scale(.8); }
-.p3 { left: 31%; transform: scale(.6); }
-.p4 { right: 31%; transform: scale(.6); }
-.p5 { right: 15%; transform: scale(.85); }
-.p6 { right: -1%; transform: scale(1.25); }
+.hero-button {
+  border: 1px solid #fff5ff66;
+  border-radius: 999px;
 
-/* =========================
-   اليراعات
-========================= */
+  padding: 15px 34px;
+
+  color: #2a1830;
+  background: linear-gradient(
+    135deg,
+    #fff0fb,
+    #dcbce8
+  );
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 35px #d8b3e633;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.hero-button span {
+  margin-left: 10px;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 45px #d8b3e655;
+}
+
+/* Fireflies */
 
 .fireflies {
   position: absolute;
-
   inset: 0;
-
   z-index: 8;
-
   pointer-events: none;
 }
 
-.fireflies span {
+.fireflies i {
   position: absolute;
 
   width: 5px;
   height: 5px;
 
   border-radius: 50%;
-
-  background: #f9dcff;
+  background: #f6d9ff;
 
   box-shadow:
-    0 0 8px #f7d5ff,
-    0 0 18px rgba(238, 181, 255, 0.7);
+    0 0 8px #f1caff,
+    0 0 18px #e2aaff;
 
-  animation: fireflyFloat 7s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
-.fireflies span:nth-child(1) { left: 15%; bottom: 27%; }
-.fireflies span:nth-child(2) { left: 27%; bottom: 19%; animation-delay: 1s; }
-.fireflies span:nth-child(3) { left: 38%; bottom: 29%; animation-delay: 2s; }
-.fireflies span:nth-child(4) { right: 24%; bottom: 26%; animation-delay: 3s; }
-.fireflies span:nth-child(5) { right: 14%; bottom: 18%; animation-delay: 1.5s; }
-.fireflies span:nth-child(6) { right: 35%; bottom: 20%; animation-delay: 2.5s; }
-.fireflies span:nth-child(7) { left: 45%; bottom: 15%; animation-delay: 3.5s; }
-.fireflies span:nth-child(8) { right: 45%; bottom: 31%; animation-delay: 4s; }
+.fireflies i:nth-child(1) { left: 12%; top: 65%; }
+.fireflies i:nth-child(2) { left: 23%; top: 55%; animation-delay: 1s; }
+.fireflies i:nth-child(3) { left: 34%; top: 72%; animation-delay: 2s; }
+.fireflies i:nth-child(4) { left: 72%; top: 61%; animation-delay: 3s; }
+.fireflies i:nth-child(5) { left: 82%; top: 70%; animation-delay: 1.5s; }
+.fireflies i:nth-child(6) { left: 62%; top: 75%; animation-delay: 2.5s; }
+.fireflies i:nth-child(7) { left: 43%; top: 62%; animation-delay: 3.5s; }
+.fireflies i:nth-child(8) { left: 56%; top: 48%; animation-delay: 4s; }
+.fireflies i:nth-child(9) { left: 17%; top: 42%; animation-delay: 2s; }
+.fireflies i:nth-child(10) { left: 88%; top: 50%; animation-delay: 1s; }
+.fireflies i:nth-child(11) { left: 39%; top: 38%; animation-delay: 3s; }
+.fireflies i:nth-child(12) { left: 67%; top: 35%; animation-delay: 4s; }
 
-@keyframes fireflyFloat {
-  0%,
-  100% {
+@keyframes float {
+  0%, 100% {
     transform: translateY(0);
-    opacity: 0.25;
+    opacity: .25;
   }
 
   50% {
-    transform: translateY(-24px);
+    transform: translateY(-22px);
     opacity: 1;
   }
 }
 
-/* =========================
-   المحتوى
-========================= */
-
-.hero {
-  position: relative;
-
-  z-index: 10;
-
-  width: min(720px, 100%);
-
-  padding: 50px 24px;
-}
-
-.eyebrow {
-  margin: 0 0 18px;
-
-  color: #d9b9e8;
-
-  font-size: 14px;
-  letter-spacing: 4px;
-}
-
-.hero h1 {
-  margin: 0;
-
-  font-size: clamp(52px, 14vw, 96px);
-  line-height: 1.05;
-
-  background:
-    linear-gradient(
-      120deg,
-      #fffaff,
-      #efd9f6 45%,
-      #d8acd9
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-
-  text-shadow:
-    0 0 35px rgba(224, 182, 239, 0.18);
-}
-
-.description {
-  max-width: 560px;
-
-  margin: 28px auto 36px;
-
-  color: #d9cede;
-
-  font-size: clamp(17px, 3vw, 21px);
-
-  line-height: 1.9;
-}
-
-.start-button {
-  border: 1px solid rgba(255, 235, 255, 0.35);
-
-  border-radius: 999px;
-
-  padding: 15px 36px;
-
-  color: #21152d;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f8def3,
-      #dcbbe9
-    );
-
-  font-size: 17px;
-  font-weight: 700;
-
-  box-shadow:
-    0 10px 35px rgba(218, 178, 232, 0.2);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.start-button:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 15px 45px rgba(218, 178, 232, 0.35);
-}
-
-/* =========================
-   الهاتف
-========================= */
-
-@media (max-width: 600px) {
-  .home-page {
-    min-height: 100svh;
-    padding: 24px 14px;
-  }
-
-  .moon {
-    width: 72px;
-    height: 72px;
-    top: 8%;
-  }
-
-  .moon-glow {
-    inset: -30px;
-  }
-
-  .forest-left,
-  .forest-right {
-    width: 48%;
-    height: 55%;
-  }
-
-  .forest-distant {
-    bottom: 20%;
-    height: 25%;
-  }
-
-  .garden-path {
-    width: 75%;
-    height: 58%;
-  }
-
-  .hero {
-    padding: 35px 12px;
-  }
-
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: 3px;
-  }
-
-  .description {
-    margin-top: 20px;
-  }
-
-  .start-button {
-    padding: 14px 30px;
-  }
-}
-
-/* تقليل الحركة لمن يفضل ذلك */
-
-@media (prefers-reduced-motion: reduce) {
-  .real-star,
-  .fireflies span {
-    animation: none;
-  }
-
-  .start-button {
-    transition: none;
-  }
-}
-/* =====================================
-   SOUL GARDEN — HERO
-===================================== */
-
-.hero {
-  position: relative;
-  z-index: 10;
-
-  width: min(900px, 100%);
-
-  min-height: 620px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 70px 24px 120px;
-}
-
-/* -------------------------------------
-   النص
-------------------------------------- */
-
-.hero-copy {
-  position: relative;
-  z-index: 12;
-
-  width: min(540px, 100%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  animation: heroEnter 1.2s ease both;
-}
-
-@keyframes heroEnter {
+@keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(25px);
   }
 
   to {
@@ -686,429 +322,43 @@
   }
 }
 
-.eyebrow {
-  margin: 0 0 18px;
-
-  color: #e4c7ec;
-
-  font-size: 13px;
-  letter-spacing: 4px;
-
-  text-shadow:
-    0 0 18px rgba(228, 199, 236, .25);
-}
-
-.hero h1 {
-  display: flex;
-  flex-direction: column;
-
-  margin: 0;
-
-  font-size: clamp(58px, 15vw, 104px);
-
-  line-height: .95;
-
-  font-weight: 500;
-
-  letter-spacing: -2px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fffaff 0%,
-      #f1d8f4 48%,
-      #d4a9d8 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-
-  text-shadow:
-    0 0 40px rgba(227, 186, 239, .16);
-}
-
-.hero h1 span {
-  font-weight: 700;
-}
-
-.description {
-  max-width: 500px;
-
-  margin: 28px auto 34px;
-
-  color: #ded0e2;
-
-  font-size: clamp(16px, 3vw, 20px);
-
-  line-height: 2;
-
-  text-shadow:
-    0 2px 15px rgba(0, 0, 0, .3);
-}
-
-/* -------------------------------------
-   الزر
-------------------------------------- */
-
-.start-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  min-width: 190px;
-
-  padding: 15px 30px;
-
-  border: 1px solid rgba(255, 238, 255, .45);
-
-  border-radius: 999px;
-
-  color: #28182f;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff0fb,
-      #dfbee8
-    );
-
-  font-family: inherit;
-
-  font-size: 17px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 8px 30px rgba(220, 177, 235, .18),
-    0 0 0 0 rgba(238, 194, 246, .25);
-
-  animation:
-    buttonGlow 4s ease-in-out infinite;
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
-}
-
-.start-button:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 14px 40px rgba(220, 177, 235, .32);
-}
-
-.start-button:active {
-  transform: translateY(0);
-}
-
-.button-sparkle {
-  font-size: 12px;
-  opacity: .7;
-}
-
-@keyframes buttonGlow {
-  0%,
-  100% {
-    box-shadow:
-      0 8px 30px rgba(220, 177, 235, .18),
-      0 0 0 0 rgba(238, 194, 246, .12);
-  }
-
-  50% {
-    box-shadow:
-      0 10px 36px rgba(220, 177, 235, .28),
-      0 0 25px 4px rgba(238, 194, 246, .07);
-  }
-}
-
-/* =====================================
-   LUNA STAGE
-===================================== */
-
-.luna-stage {
-  position: absolute;
-
-  left: 50%;
-  bottom: 35px;
-
-  width: 210px;
-  height: 300px;
-
-  transform: translateX(-50%);
-
-  z-index: 11;
-
-  pointer-events: none;
-}
-
-/* الهالة */
-
-.luna-aura {
-  position: absolute;
-
-  left: 50%;
-  top: 30px;
-
-  width: 190px;
-  height: 230px;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(235, 196, 245, .18),
-      rgba(211, 166, 229, .08) 40%,
-      transparent 72%
-    );
-
-  filter: blur(12px);
-}
-
-/* =====================================
-   Luna — placeholder artwork
-===================================== */
-
-.luna-placeholder {
-  position: absolute;
-
-  left: 50%;
-  bottom: 0;
-
-  width: 130px;
-  height: 245px;
-
-  transform: translateX(-50%);
-
-  filter:
-    drop-shadow(
-      0 0 20px rgba(225, 181, 239, .18)
-    );
-}
-
-/* الشعر */
-
-.luna-hair {
-  position: absolute;
-
-  left: 50%;
-  top: 18px;
-
-  width: 82px;
-  height: 100px;
-
-  transform: translateX(-50%);
-
-  border-radius:
-    50% 50% 45% 45%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #4c3158,
-      #24172e
-    );
-
-  box-shadow:
-    -20px 18px 0 -7px #30203a,
-    20px 18px 0 -7px #30203a;
-}
-
-/* الرأس */
-
-.luna-head {
-  position: absolute;
-
-  left: 50%;
-  top: 31px;
-
-  width: 58px;
-  height: 72px;
-
-  transform: translateX(-50%);
-
-  border-radius:
-    48% 48% 45% 45%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f8dfdf,
-      #e8c0c9
-    );
-
-  z-index: 2;
-}
-
-/* العينان */
-
-.luna-eye {
-  position: absolute;
-
-  top: 32px;
-
-  width: 7px;
-  height: 10px;
-
-  border-radius: 50%;
-
-  background: #4d3159;
-
-  box-shadow:
-    0 0 5px rgba(255, 255, 255, .35);
-}
-
-.luna-eye.left {
-  left: 16px;
-}
-
-.luna-eye.right {
-  right: 16px;
-}
-
-/* الجسم */
-
-.luna-body {
-  position: absolute;
-
-  left: 50%;
-  top: 94px;
-
-  width: 54px;
-  height: 70px;
-
-  transform: translateX(-50%);
-
-  border-radius:
-    25px 25px 12px 12px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #d8b5df,
-      #9e709f
-    );
-
-  z-index: 2;
-}
-
-/* الفستان */
-
-.luna-dress {
-  position: absolute;
-
-  left: 50%;
-  bottom: 0;
-
-  width: 125px;
-  height: 130px;
-
-  transform: translateX(-50%);
-
-  clip-path: polygon(
-    38% 0,
-    62% 0,
-    100% 100%,
-    0 100%
-  );
-
-  border-radius: 15px 15px 5px 5px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #b990bd,
-      #62436c
-    );
-
-  box-shadow:
-    inset 0 0 25px rgba(255, 228, 255, .10);
-}
-
-/* اسم الشخصية */
-
-.luna-caption {
-  position: absolute;
-
-  bottom: -26px;
-
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  color: rgba(239, 211, 244, .55);
-
-  font-size: 11px;
-
-  letter-spacing: 3px;
-}
-
-/* =====================================
-   الهاتف
-===================================== */
+/* Mobile */
 
 @media (max-width: 600px) {
-
-  .hero {
-    min-height: 700px;
-
-    align-items: flex-start;
-
-    padding-top: 180px;
-    padding-bottom: 140px;
+  .moon {
+    width: 72px;
+    height: 72px;
   }
 
-  .hero-copy {
-    width: 100%;
+  .hero-content {
+    margin-top: -2vh;
   }
 
-  .hero h1 {
-    font-size: clamp(55px, 18vw, 82px);
+  .hero-content h1 {
+    font-size: clamp(58px, 18vw, 82px);
   }
 
-  .description {
-    max-width: 330px;
-
+  .hero-description {
     font-size: 16px;
-
-    line-height: 1.85;
+    line-height: 1.8;
   }
 
-  .luna-stage {
-    bottom: 20px;
-
-    transform:
-      translateX(-50%)
-      scale(.82);
+  .garden-path {
+    width: 80%;
   }
 
-  .start-button {
-    min-width: 180px;
+  .forest {
+    width: 55%;
   }
 }
 
-/* =====================================
-   تقليل الحركة
-===================================== */
-
 @media (prefers-reduced-motion: reduce) {
-
-  .hero-copy,
-  .start-button {
+  .hero-content,
+  .fireflies i {
     animation: none;
   }
 
-  .start-button {
+  .hero-button {
     transition: none;
   }
   }
