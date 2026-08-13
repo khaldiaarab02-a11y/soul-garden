@@ -1,268 +1,323 @@
-/* Luna — Soul Garden guide
-   CSS/SVG-free placeholder artwork. Replace the artwork layer later
-   without changing the Fairy component API. */
-
 .fairy {
+  --fairy-midnight: #24203d;
   --fairy-lavender: #9b8bc8;
   --fairy-violet: #7666a8;
   --fairy-blush: #e8b8c8;
   --fairy-ivory: #f8f3ec;
   --fairy-gold: #d9b978;
-  position: relative;
-  width: min(30rem, 76vw);
-  min-height: 25rem;
-  display: grid;
-  place-items: center;
-  isolation: isolate;
-  color: var(--fairy-ivory);
-  font-family: inherit;
-}
 
-.fairy__artwork {
   position: relative;
-  width: 100%;
-  min-height: 25rem;
+  width: min(280px, 58vw);
+  aspect-ratio: 0.68;
   display: grid;
-  place-items: center;
+  place-items: end center;
+  isolation: isolate;
+
   animation: fairy-float 7s ease-in-out infinite;
 }
 
 .fairy__aura {
   position: absolute;
-  width: 72%;
-  aspect-ratio: 1;
+  inset: 8% -20% 2%;
+  z-index: -2;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(217,185,120,.18), transparent 34%),
-    radial-gradient(circle, rgba(155,139,200,.30), transparent 65%);
-  filter: blur(10px);
+    radial-gradient(
+      circle,
+      rgb(155 139 200 / 0.28) 0%,
+      rgb(232 184 200 / 0.14) 38%,
+      transparent 72%
+    );
+  filter: blur(20px);
   animation: fairy-breathe 5s ease-in-out infinite;
-  z-index: -2;
 }
 
-.fairy__figure {
+.fairy__character {
   position: relative;
-  width: 12rem;
-  height: 20rem;
+  width: 72%;
+  height: 88%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  animation: fairy-breathe 5s ease-in-out infinite;
 }
 
-.fairy__head {
+/* Hair */
+
+.fairy__hair {
   position: absolute;
-  top: 1.3rem;
-  width: 6.3rem;
-  height: 7rem;
-  border-radius: 48% 48% 44% 44%;
-  background: linear-gradient(145deg, #f7d9d0, #e9bcb9);
-  box-shadow: 0 0 2rem rgba(232,184,200,.22);
-  z-index: 4;
+  top: 2%;
+  width: 48%;
+  height: 29%;
+  border-radius: 48% 48% 42% 42%;
+  background:
+    linear-gradient(
+      145deg,
+      #302850 0%,
+      #514477 45%,
+      #9b78a8 75%,
+      #d39ab5 100%
+    );
+  box-shadow:
+    0 0 18px rgb(155 139 200 / 0.22);
+  z-index: 2;
 }
+
+.fairy__hair::before,
+.fairy__hair::after {
+  content: '';
+  position: absolute;
+  top: 45%;
+  width: 45%;
+  height: 90%;
+  border-radius: 50%;
+  background: linear-gradient(
+    160deg,
+    #403460,
+    #8f6e9f 65%,
+    #d39ab5
+  );
+}
+
+.fairy__hair::before {
+  left: -28%;
+  transform: rotate(8deg);
+}
+
+.fairy__hair::after {
+  right: -28%;
+  transform: rotate(-8deg);
+}
+
+/* Face */
 
 .fairy__face {
-  position: absolute;
-  inset: 2.5rem .7rem 1rem;
+  position: relative;
+  width: 39%;
+  aspect-ratio: 0.82;
+  margin-bottom: -1%;
+  border-radius: 48% 48% 45% 45%;
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf5,
+      var(--fairy-ivory)
+    );
+  box-shadow:
+    inset 0 -10px 18px rgb(232 184 200 / 0.14);
+  z-index: 3;
 }
 
 .fairy__eye {
   position: absolute;
-  top: .4rem;
-  width: .55rem;
-  height: .85rem;
+  top: 42%;
+  width: 11%;
+  height: 15%;
   border-radius: 50%;
-  background: radial-gradient(circle at 45% 35%, #fff 0 10%, #9b8bc8 12% 55%, #30264d 60%);
-  box-shadow: 0 0 .5rem rgba(155,139,200,.65);
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      #fff 0 10%,
+      #9d8bca 12% 45%,
+      #4d426f 48% 100%
+    );
 }
-.fairy__eye--left { left: .75rem; }
-.fairy__eye--right { right: .75rem; }
+
+.fairy__eye--left {
+  left: 24%;
+}
+
+.fairy__eye--right {
+  right: 24%;
+}
+
+.fairy__nose {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  width: 4%;
+  height: 9%;
+  border-right: 1px solid rgb(118 102 168 / 0.28);
+  transform: translateX(-50%);
+}
 
 .fairy__mouth {
   position: absolute;
   left: 50%;
-  bottom: .15rem;
-  width: 1.2rem;
-  height: .45rem;
-  border-bottom: 2px solid rgba(118,70,91,.65);
-  border-radius: 0 0 60% 60%;
+  bottom: 22%;
+  width: 20%;
+  height: 10%;
+  border-bottom: 1.5px solid rgb(118 102 168 / 0.58);
+  border-radius: 0 0 50% 50%;
   transform: translateX(-50%);
 }
 
-.fairy__hair {
-  position: absolute;
-  background: linear-gradient(160deg, #30264d 0%, #7666a8 48%, #c77ba9 100%);
-}
-.fairy__hair--back {
-  top: -.3rem;
-  width: 8.2rem;
-  height: 11.2rem;
-  border-radius: 48% 52% 58% 55%;
-  z-index: 3;
-  filter: drop-shadow(0 .6rem 1rem rgba(36,32,61,.25));
-}
-.fairy__hair--front {
-  inset: -.2rem auto auto -1rem;
-  width: 2.6rem;
-  height: 5.8rem;
-  border-radius: 60% 20% 70% 35%;
-  z-index: 5;
-}
+/* Body */
 
 .fairy__body {
   position: relative;
-  width: 8rem;
-  height: 12rem;
-  z-index: 2;
+  width: 72%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
+
 .fairy__dress {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 8rem;
-  height: 10rem;
-  transform: translateX(-50%);
-  clip-path: polygon(38% 0, 62% 0, 74% 40%, 100% 100%, 0 100%, 26% 40%);
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(
+    38% 0%,
+    62% 0%,
+    70% 28%,
+    100% 100%,
+    0% 100%,
+    30% 28%
+  );
   background:
-    linear-gradient(100deg, rgba(248,243,236,.98), rgba(155,139,200,.8)),
-    linear-gradient(transparent, rgba(232,184,200,.4));
-  box-shadow: 0 1rem 2rem rgba(36,32,61,.22);
+    linear-gradient(
+      145deg,
+      #faf5ee 0%,
+      #ddd1ec 48%,
+      #9b8bc8 100%
+    );
+  box-shadow:
+    0 -8px 25px rgb(155 139 200 / 0.16);
 }
-.fairy__dress::after {
-  content: '';
+
+/* Soul Seed */
+
+.fairy__soul-seed {
   position: absolute;
-  inset: 35% 20% 20%;
-  border: 1px solid rgba(217,185,120,.5);
-  border-radius: 50%;
-}
-.fairy__seed {
-  position: absolute;
+  top: 22%;
   left: 50%;
-  top: 1.5rem;
-  width: .8rem;
-  height: 1.1rem;
+  width: 13px;
+  height: 17px;
+  border-radius: 55% 45% 55% 45%;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff7cf,
+      var(--fairy-gold) 45%,
+      #b38d46 100%
+    );
+  box-shadow:
+    0 0 10px rgb(217 185 120 / 0.65),
+    0 0 24px rgb(217 185 120 / 0.28);
   transform: translateX(-50%) rotate(45deg);
-  border-radius: 70% 20% 70% 20%;
-  background: var(--fairy-gold);
-  box-shadow: 0 0 1rem rgba(217,185,120,.8);
-  animation: fairy-seed 4s ease-in-out infinite;
+  animation: soul-seed-pulse 4s ease-in-out infinite;
 }
+
+/* Wings */
 
 .fairy__wings {
   position: absolute;
-  width: 14rem;
-  height: 15rem;
-  z-index: 1;
-}
-.fairy__wings span {
-  position: absolute;
-  display: block;
-  width: 6.5rem;
-  height: 9rem;
-  border: 1px solid rgba(217,185,120,.38);
-  background: linear-gradient(135deg, rgba(155,139,200,.22), rgba(232,184,200,.10));
-  backdrop-filter: blur(1px);
-}
-.fairy__wings--back span:first-child {
-  left: 0; top: 1rem; transform: rotate(24deg); border-radius: 70% 25% 65% 35%;
-}
-.fairy__wings--back span:last-child {
-  right: 0; top: 1rem; transform: scaleX(-1) rotate(24deg); border-radius: 70% 25% 65% 35%;
-}
-.fairy__wings--front {
-  z-index: 5;
+  inset: 19% 3% 25%;
+  z-index: 0;
   pointer-events: none;
 }
-.fairy__wings--front span:first-child {
-  left: .7rem; bottom: 1.2rem; transform: rotate(14deg) scale(.62); border-radius: 70% 25% 65% 35%;
-}
-.fairy__wings--front span:last-child {
-  right: .7rem; bottom: 1.2rem; transform: scaleX(-1) rotate(14deg) scale(.62); border-radius: 70% 25% 65% 35%;
-}
 
-.fairy__sparkles {
+.fairy__wing {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.fairy__sparkles i {
-  position: absolute;
-  left: calc(50% + (var(--i) - 3) * 2.4rem);
-  top: calc(44% + (var(--i) % 3 - 1) * 4rem);
-  width: .28rem;
-  height: .28rem;
-  border-radius: 50%;
-  background: var(--fairy-gold);
-  box-shadow: 0 0 .7rem rgba(217,185,120,.8);
-  opacity: .35;
-  animation: fairy-sparkle calc(3.5s + var(--i) * .35s) ease-in-out infinite;
+  top: 15%;
+  width: 38%;
+  height: 58%;
+  border: 1px solid rgb(217 185 120 / 0.4);
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgb(232 184 200 / 0.24),
+      rgb(155 139 200 / 0.12) 55%,
+      transparent 75%
+    );
+  filter: blur(0.2px);
 }
 
-.fairy__message {
-  position: absolute;
-  z-index: 10;
-  bottom: -1rem;
-  max-width: min(25rem, 90vw);
-  padding: .8rem 1.1rem;
-  border: 1px solid rgba(217,185,120,.28);
-  border-radius: 1.2rem;
-  background: rgba(36,32,61,.72);
-  box-shadow: 0 .8rem 2rem rgba(36,32,61,.22);
-  backdrop-filter: blur(12px);
-  text-align: center;
-  line-height: 1.8;
-  font-size: .95rem;
+.fairy__wing--left {
+  left: 3%;
+  border-radius: 70% 30% 65% 35%;
+  transform: rotate(-18deg);
 }
 
-.fairy--welcome .fairy__seed,
-.fairy--encouraging .fairy__seed,
-.fairy--celebrating .fairy__seed { box-shadow: 0 0 1.5rem rgba(217,185,120,1); }
-
-.fairy--celebrating .fairy__wings--front span {
-  animation: fairy-wing 1.5s ease-in-out infinite alternate;
+.fairy__wing--right {
+  right: 3%;
+  border-radius: 30% 70% 35% 65%;
+  transform: rotate(18deg);
 }
 
-.fairy--farewell .fairy__artwork {
-  animation: fairy-farewell 2.5s ease-in-out both;
+/* Welcome state */
+
+.fairy--welcome .fairy__soul-seed,
+.fairy--encouraging .fairy__soul-seed,
+.fairy--celebrating .fairy__soul-seed {
+  animation-duration: 2.4s;
 }
+
+.fairy--celebrating .fairy__wings {
+  animation: fairy-wings-open 2.8s ease-in-out infinite;
+}
+
+/* Main animations */
 
 @keyframes fairy-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-.6rem); }
-}
-@keyframes fairy-breathe {
-  0%, 100% { transform: scale(.96); opacity: .72; }
-  50% { transform: scale(1.04); opacity: 1; }
-}
-@keyframes fairy-seed {
-  0%, 100% { transform: translateX(-50%) rotate(45deg) scale(.9); }
-  50% { transform: translateX(-50%) rotate(45deg) scale(1.08); }
-}
-@keyframes fairy-sparkle {
-  0%, 100% { transform: translateY(.5rem) scale(.55); opacity: .15; }
-  50% { transform: translateY(-.8rem) scale(1); opacity: .8; }
-}
-@keyframes fairy-wing {
-  from { transform: rotate(14deg) scale(.62); }
-  to { transform: rotate(20deg) scale(.68); }
-}
-@keyframes fairy-farewell {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: .65; transform: translateY(-1rem); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
 }
 
-@media (max-width: 700px) {
-  .fairy { width: min(21rem, 82vw); min-height: 20rem; }
-  .fairy__artwork { min-height: 20rem; transform: scale(.82); }
-  .fairy__message { bottom: -.4rem; font-size: .88rem; }
+@keyframes fairy-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.012);
+  }
+}
+
+@keyframes soul-seed-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: translateX(-50%) rotate(45deg) scale(0.94);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(45deg) scale(1.08);
+  }
+}
+
+@keyframes fairy-wings-open {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 640px) {
+  .fairy {
+    width: min(220px, 54vw);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fairy__artwork,
+  .fairy,
+  .fairy__character,
   .fairy__aura,
-  .fairy__seed,
-  .fairy__sparkles i,
-  .fairy--celebrating .fairy__wings--front span {
-    animation: none !important;
+  .fairy__soul-seed,
+  .fairy__wings {
+    animation: none;
   }
 }
