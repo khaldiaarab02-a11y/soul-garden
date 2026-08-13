@@ -638,3 +638,477 @@
     transition: none;
   }
 }
+/* =====================================
+   SOUL GARDEN — HERO
+===================================== */
+
+.hero {
+  position: relative;
+  z-index: 10;
+
+  width: min(900px, 100%);
+
+  min-height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 70px 24px 120px;
+}
+
+/* -------------------------------------
+   النص
+------------------------------------- */
+
+.hero-copy {
+  position: relative;
+  z-index: 12;
+
+  width: min(540px, 100%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: heroEnter 1.2s ease both;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+
+  color: #e4c7ec;
+
+  font-size: 13px;
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 18px rgba(228, 199, 236, .25);
+}
+
+.hero h1 {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+
+  font-size: clamp(58px, 15vw, 104px);
+
+  line-height: .95;
+
+  font-weight: 500;
+
+  letter-spacing: -2px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffaff 0%,
+      #f1d8f4 48%,
+      #d4a9d8 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  text-shadow:
+    0 0 40px rgba(227, 186, 239, .16);
+}
+
+.hero h1 span {
+  font-weight: 700;
+}
+
+.description {
+  max-width: 500px;
+
+  margin: 28px auto 34px;
+
+  color: #ded0e2;
+
+  font-size: clamp(16px, 3vw, 20px);
+
+  line-height: 2;
+
+  text-shadow:
+    0 2px 15px rgba(0, 0, 0, .3);
+}
+
+/* -------------------------------------
+   الزر
+------------------------------------- */
+
+.start-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-width: 190px;
+
+  padding: 15px 30px;
+
+  border: 1px solid rgba(255, 238, 255, .45);
+
+  border-radius: 999px;
+
+  color: #28182f;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0fb,
+      #dfbee8
+    );
+
+  font-family: inherit;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 30px rgba(220, 177, 235, .18),
+    0 0 0 0 rgba(238, 194, 246, .25);
+
+  animation:
+    buttonGlow 4s ease-in-out infinite;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.start-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 40px rgba(220, 177, 235, .32);
+}
+
+.start-button:active {
+  transform: translateY(0);
+}
+
+.button-sparkle {
+  font-size: 12px;
+  opacity: .7;
+}
+
+@keyframes buttonGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 30px rgba(220, 177, 235, .18),
+      0 0 0 0 rgba(238, 194, 246, .12);
+  }
+
+  50% {
+    box-shadow:
+      0 10px 36px rgba(220, 177, 235, .28),
+      0 0 25px 4px rgba(238, 194, 246, .07);
+  }
+}
+
+/* =====================================
+   LUNA STAGE
+===================================== */
+
+.luna-stage {
+  position: absolute;
+
+  left: 50%;
+  bottom: 35px;
+
+  width: 210px;
+  height: 300px;
+
+  transform: translateX(-50%);
+
+  z-index: 11;
+
+  pointer-events: none;
+}
+
+/* الهالة */
+
+.luna-aura {
+  position: absolute;
+
+  left: 50%;
+  top: 30px;
+
+  width: 190px;
+  height: 230px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(235, 196, 245, .18),
+      rgba(211, 166, 229, .08) 40%,
+      transparent 72%
+    );
+
+  filter: blur(12px);
+}
+
+/* =====================================
+   Luna — placeholder artwork
+===================================== */
+
+.luna-placeholder {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 130px;
+  height: 245px;
+
+  transform: translateX(-50%);
+
+  filter:
+    drop-shadow(
+      0 0 20px rgba(225, 181, 239, .18)
+    );
+}
+
+/* الشعر */
+
+.luna-hair {
+  position: absolute;
+
+  left: 50%;
+  top: 18px;
+
+  width: 82px;
+  height: 100px;
+
+  transform: translateX(-50%);
+
+  border-radius:
+    50% 50% 45% 45%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4c3158,
+      #24172e
+    );
+
+  box-shadow:
+    -20px 18px 0 -7px #30203a,
+    20px 18px 0 -7px #30203a;
+}
+
+/* الرأس */
+
+.luna-head {
+  position: absolute;
+
+  left: 50%;
+  top: 31px;
+
+  width: 58px;
+  height: 72px;
+
+  transform: translateX(-50%);
+
+  border-radius:
+    48% 48% 45% 45%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8dfdf,
+      #e8c0c9
+    );
+
+  z-index: 2;
+}
+
+/* العينان */
+
+.luna-eye {
+  position: absolute;
+
+  top: 32px;
+
+  width: 7px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #4d3159;
+
+  box-shadow:
+    0 0 5px rgba(255, 255, 255, .35);
+}
+
+.luna-eye.left {
+  left: 16px;
+}
+
+.luna-eye.right {
+  right: 16px;
+}
+
+/* الجسم */
+
+.luna-body {
+  position: absolute;
+
+  left: 50%;
+  top: 94px;
+
+  width: 54px;
+  height: 70px;
+
+  transform: translateX(-50%);
+
+  border-radius:
+    25px 25px 12px 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d8b5df,
+      #9e709f
+    );
+
+  z-index: 2;
+}
+
+/* الفستان */
+
+.luna-dress {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 125px;
+  height: 130px;
+
+  transform: translateX(-50%);
+
+  clip-path: polygon(
+    38% 0,
+    62% 0,
+    100% 100%,
+    0 100%
+  );
+
+  border-radius: 15px 15px 5px 5px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b990bd,
+      #62436c
+    );
+
+  box-shadow:
+    inset 0 0 25px rgba(255, 228, 255, .10);
+}
+
+/* اسم الشخصية */
+
+.luna-caption {
+  position: absolute;
+
+  bottom: -26px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: rgba(239, 211, 244, .55);
+
+  font-size: 11px;
+
+  letter-spacing: 3px;
+}
+
+/* =====================================
+   الهاتف
+===================================== */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 700px;
+
+    align-items: flex-start;
+
+    padding-top: 180px;
+    padding-bottom: 140px;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(55px, 18vw, 82px);
+  }
+
+  .description {
+    max-width: 330px;
+
+    font-size: 16px;
+
+    line-height: 1.85;
+  }
+
+  .luna-stage {
+    bottom: 20px;
+
+    transform:
+      translateX(-50%)
+      scale(.82);
+  }
+
+  .start-button {
+    min-width: 180px;
+  }
+}
+
+/* =====================================
+   تقليل الحركة
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-copy,
+  .start-button {
+    animation: none;
+  }
+
+  .start-button {
+    transition: none;
+  }
+  }
