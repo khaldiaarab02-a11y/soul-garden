@@ -1,19 +1,15 @@
-export default function App() {
+function App() {
   return (
-    <main className="home">
-      <section className="hero">
-        <p className="eyebrow">رحلة إلى الداخل</p>
+    <main>
+      <h1>حديقة الروح</h1>
 
-        <h1>حديقة الروح</h1>
+      <p>
+        مساحة هادئة للتأمل وفهم المشاعر واكتشاف السلام الداخلي.
+      </p>
 
-        <p className="subtitle">
-          مساحة هادئة للتأمل، فهم المشاعر، واكتشاف السلام الداخلي.
-        </p>
-
-        <button className="start-button">
-          ابدئي رحلتكِ
-        </button>
-      </section>
+      <button>ابدئي رحلتك</button>
     </main>
   );
 }
+
+export default App;
