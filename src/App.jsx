@@ -4,7 +4,7 @@ function App() {
   return (
     <main className="home-page">
 
-      {/* السماء والنجوم */}
+      {/* السماء */}
       <div className="sky" aria-hidden="true">
         <span className="real-star s1" />
         <span className="real-star s2" />
@@ -25,39 +25,36 @@ function App() {
         <div className="moon-glow" />
       </div>
 
-      {/* هلال ضوئي بعيد */}
       <div className="atmosphere-glow" aria-hidden="true" />
 
-      {/* غابة بعيدة */}
+      {/* الغابة البعيدة */}
       <svg
         className="forest-svg forest-distant"
         viewBox="0 0 1200 420"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <path
-          d="
-            M0 420
-            L0 330
-            C40 290 55 245 82 330
-            C110 280 135 235 165 330
-            C190 270 225 215 255 330
-            C285 285 310 250 340 330
-            C370 265 400 220 430 330
-            C460 285 490 245 520 330
-            C555 270 585 210 620 330
-            C650 285 680 250 710 330
-            C740 270 775 225 805 330
-            C835 280 865 240 900 330
-            C930 275 960 220 995 330
-            C1025 280 1060 245 1090 330
-            C1120 275 1150 235 1200 325
-            L1200 420 Z
-          "
-        />
+        <path d="
+          M0 420
+          L0 330
+          C40 290 55 245 82 330
+          C110 280 135 235 165 330
+          C190 270 225 215 255 330
+          C285 285 310 250 340 330
+          C370 265 400 220 430 330
+          C460 285 490 245 520 330
+          C555 270 585 210 620 330
+          C650 285 680 250 710 330
+          C740 270 775 225 805 330
+          C835 280 865 240 900 330
+          C930 275 960 220 995 330
+          C1025 280 1060 245 1090 330
+          C1120 275 1150 235 1200 325
+          L1200 420 Z
+        " />
       </svg>
 
-      {/* الأشجار الجانبية القريبة */}
+      {/* الأشجار الجانبية */}
       <svg
         className="forest-svg forest-left"
         viewBox="0 0 420 700"
@@ -66,7 +63,6 @@ function App() {
         <path d="M70 700 C55 580 85 450 125 360 C145 315 175 270 205 230" />
         <path d="M115 470 C65 420 45 370 35 315" />
         <path d="M145 410 C210 365 245 315 265 260" />
-        <path d="M105 545 C165 510 210 460 230 405" />
 
         <path
           className="leaf-mass"
@@ -102,7 +98,6 @@ function App() {
         <path d="M350 700 C365 580 335 450 295 360 C275 315 245 270 215 230" />
         <path d="M305 470 C355 420 375 370 385 315" />
         <path d="M275 410 C210 365 175 315 155 260" />
-        <path d="M315 545 C255 510 210 460 190 405" />
 
         <path
           className="leaf-mass"
@@ -130,7 +125,7 @@ function App() {
         />
       </svg>
 
-      {/* ضباب */}
+      {/* الضباب */}
       <div className="mist mist-one" aria-hidden="true" />
       <div className="mist mist-two" aria-hidden="true" />
 
@@ -139,7 +134,7 @@ function App() {
         <div className="path-light" />
       </div>
 
-      {/* نباتات المقدمة */}
+      {/* النباتات */}
       <div className="foreground-plants" aria-hidden="true">
         <span className="plant p1" />
         <span className="plant p2" />
@@ -161,19 +156,64 @@ function App() {
         <span />
       </div>
 
-      {/* المحتوى */}
+      {/* =========================
+          HERO
+      ========================= */}
+
       <section className="hero">
-        <p className="eyebrow">رحلة إلى الداخل</p>
 
-        <h1>حديقة الروح</h1>
+        <div className="hero-copy">
 
-        <p className="description">
-          مساحة هادئة للتأمل، فهم المشاعر، واكتشاف السلام الداخلي.
-        </p>
+          <p className="eyebrow">
+            ✦ رحلة إلى الداخل ✦
+          </p>
 
-        <button className="start-button">
-          ابدئي رحلتك
-        </button>
+          <h1>
+            حديقة
+            <span>الروح</span>
+          </h1>
+
+          <p className="description">
+            مساحة هادئة تلتقين فيها بذاتك،
+            تفهمين مشاعرك، وتبدئين رحلة
+            العودة إلى السلام الداخلي.
+          </p>
+
+          <button className="start-button">
+            <span>ابدئي رحلتك</span>
+            <span className="button-sparkle">✦</span>
+          </button>
+
+        </div>
+
+        {/* Luna Artwork Slot */}
+        <div className="luna-stage" aria-label="Luna character artwork">
+
+          <div className="luna-aura" />
+
+          <div className="luna-placeholder">
+
+            <div className="luna-hair" />
+
+            <div className="luna-head">
+              <span className="luna-eye left" />
+              <span className="luna-eye right" />
+            </div>
+
+            <div className="luna-body" />
+
+            <div className="luna-dress" />
+
+          </div>
+
+          <div className="luna-caption">
+            <span>✦</span>
+            لونا
+            <span>✦</span>
+          </div>
+
+        </div>
+
       </section>
 
     </main>
