@@ -1,93 +1,55 @@
-import React from 'react';
-import { fairyConfig } from './fairyConfig';
+import { fairyConfig } from './fairyConfig.js';
 import {
   DEFAULT_FAIRY_STATE,
-  FAIRY_STATES,
   isValidFairyState,
-} from './fairyStates';
+} from './fairyStates.js';
+import FairyGlow from './components/FairyGlow.jsx';
+import FairyMessage from './components/FairyMessage.jsx';
 import './Fairy.css';
-
-const STATE_CLASS = {
-  [FAIRY_STATES.IDLE]: 'fairy--idle',
-  [FAIRY_STATES.WELCOME]: 'fairy--welcome',
-  [FAIRY_STATES.LISTENING]: 'fairy--listening',
-  [FAIRY_STATES.THINKING]: 'fairy--thinking',
-  [FAIRY_STATES.ENCOURAGING]: 'fairy--encouraging',
-  [FAIRY_STATES.CELEBRATING]: 'fairy--celebrating',
-  [FAIRY_STATES.FAREWELL]: 'fairy--farewell',
-};
-
-function LunaArtwork({ state }) {
-  return (
-    <div className="fairy__artwork" aria-hidden="true">
-      <div className="fairy__aura" />
-      <div className="fairy__wings fairy__wings--back">
-        <span />
-        <span />
-      </div>
-
-      <div className="fairy__figure">
-        <div className="fairy__hair fairy__hair--back" />
-        <div className="fairy__body">
-          <div className="fairy__dress" />
-          <div className="fairy__seed" />
-        </div>
-        <div className="fairy__head">
-          <div className="fairy__hair fairy__hair--front" />
-          <div className="fairy__face">
-            <span className="fairy__eye fairy__eye--left" />
-            <span className="fairy__eye fairy__eye--right" />
-            <span className="fairy__mouth" />
-          </div>
-        </div>
-      </div>
-
-      <div className="fairy__wings fairy__wings--front">
-        <span />
-        <span />
-      </div>
-
-      <div className="fairy__sparkles">
-        {Array.from({ length: 7 }, (_, index) => (
-          <i key={index} style={{ '--i': index }} />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function Fairy({
   state = DEFAULT_FAIRY_STATE,
-  message,
-  visible = true,
+  message = '',
   className = '',
-  onAppear,
-  'aria-label': ariaLabel,
 }) {
-  const safeState = isValidFairyState(state) ? state : DEFAULT_FAIRY_STATE;
-  const stateClass = STATE_CLASS[safeState];
-
-  React.useEffect(() => {
-    if (visible) onAppear?.();
-  }, [visible, onAppear]);
-
-  if (!visible) return null;
+  const safeState = isValidFairyState(state)
+    ? state
+    : DEFAULT_FAIRY_STATE;
 
   return (
-    <section
-      className={`fairy ${stateClass} ${className}`.trim()}
-      aria-label={ariaLabel || fairyConfig.accessibilityLabel}
-      data-fairy-state={safeState}
+    <div
+      className={`fairy fairy--${safeState.toLowerCase()} ${className}`}
+      role="img"
+      aria-label={fairyConfig.accessibilityLabel}
     >
-      <LunaArtwork state={safeState} />
+      <FairyGlow />
 
-      {message ? (
-        <div className="fairy__message" role="status" aria-live="polite">
-          {message}
+      <div className="fairy__aura" aria-hidden="true" />
+
+      <div className="fairy__wings" aria-hidden="true">
+        <span className="fairy__wing fairy__wing--left" />
+        <span className="fairy__wing fairy__wing--right" />
+      </div>
+
+      <div className="fairy__character">
+        <div className="fairy__hair" aria-hidden="true" />
+
+        <div className="fairy__face">
+          <span className="fairy__eye fairy__eye--left" />
+          <span className="fairy__eye fairy__eye--right" />
+
+          <span className="fairy__nose" />
+
+          <span className="fairy__mouth" />
         </div>
-      ) : null}
-    </section>
+
+        <div className="fairy__body">
+          <div className="fairy__dress" />
+          <div className="fairy__soul-seed" aria-hidden="true" />
+        </div>
+      </div>
+
+      <FairyMessage message={message} />
+    </div>
   );
 }
-
-export { FAIRY_STATES };
