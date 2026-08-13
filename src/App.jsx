@@ -1,5 +1,4 @@
-import HeroScene from './scenes/HeroScene/HeroScene.jsx';
-
+import HeroScene from './Scenes/HeroScene/HeroScene.jsx';
 /*
   App
   ===
