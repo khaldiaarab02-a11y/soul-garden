@@ -1,0 +1,9 @@
+TASK 003 — Luna/Fairy character system
+
+This package contains the TASK 003 files to add/replace in the existing Soul Garden project.
+Keep all existing TASK 001 + TASK 002 files unchanged except the Fairy files listed here.
+
+Important:
+- Keep folder name `src/characters/Fairy/`.
+- Keep `vite.config.js` with `base: '/soul-garden/'`.
+- Do not delete existing project files.
