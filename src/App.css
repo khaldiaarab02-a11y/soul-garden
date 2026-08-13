@@ -211,3 +211,69 @@
     padding: 14px 30px;
   }
   }
+/* القمر */
+
+.moon {
+  position: absolute;
+
+  top: 9%;
+  left: 50%;
+
+  width: 92px;
+  height: 92px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fffdfd 0%,
+      #f7eefa 45%,
+      #dfc9eb 75%,
+      #c5a9d5 100%
+    );
+
+  box-shadow:
+    0 0 25px rgba(245, 226, 255, 0.45),
+    0 0 70px rgba(214, 177, 239, 0.25);
+
+  z-index: 1;
+}
+
+/* توهج القمر */
+
+.moon-glow {
+  position: absolute;
+
+  inset: -35px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(239, 213, 250, 0.20) 0%,
+      rgba(221, 183, 239, 0.10) 35%,
+      transparent 70%
+    );
+
+  filter: blur(8px);
+
+  z-index: -1;
+}
+
+/* حجم القمر على الهاتف */
+
+@media (max-width: 480px) {
+  .moon {
+    width: 72px;
+    height: 72px;
+    top: 8%;
+  }
+
+  .moon-glow {
+    inset: -28px;
+  }
+}
