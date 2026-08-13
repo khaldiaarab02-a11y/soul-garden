@@ -1,0 +1,182 @@
+.sg-garden {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sg-garden__layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.sg-garden__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+/* ---- Moonlight glow ----
+   "Soft moonlight / magical illumination" — a single large radial
+   wash, slowest-moving layer (furthest back). */
+.sg-garden__moonlight {
+  background: radial-gradient(
+    ellipse 60% 45% at 50% 8%,
+    rgba(243, 231, 206, 0.35) 0%,
+    rgba(201, 161, 90, 0.14) 35%,
+    transparent 70%
+  );
+  transform: translate(
+    calc(var(--parallax-x, 0px) * 0.2),
+    calc(var(--parallax-y, 0px) * 0.2)
+  );
+  animation: sg-moonlight-breathe var(--duration-ambient) var(--ease-in-out-soft) infinite alternate;
+}
+
+@keyframes sg-moonlight-breathe {
+  from { opacity: 0.85; }
+  to { opacity: 1; }
+}
+
+/* ---- Distant trees ---- */
+.sg-garden__trees {
+  transform: translate(
+    calc(var(--parallax-x, 0px) * 0.4),
+    calc(var(--parallax-y, 0px) * 0.4)
+  );
+}
+
+.sg-trees-placeholder {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 42%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-inline: 4%;
+  filter: blur(2px);
+  opacity: 0.8;
+}
+
+.sg-tree {
+  display: block;
+  background: linear-gradient(
+    to top,
+    var(--color-violet-700) 0%,
+    var(--color-midnight-700) 100%
+  );
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+}
+
+.sg-tree--1 { width: 16%; height: 55%; }
+.sg-tree--2 { width: 20%; height: 78%; }
+.sg-tree--3 { width: 24%; height: 100%; }
+.sg-tree--4 { width: 20%; height: 70%; }
+.sg-tree--5 { width: 15%; height: 48%; }
+
+/* ---- Pathway ---- */
+.sg-garden__pathway {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform: translate(
+    calc(var(--parallax-x, 0px) * 0.15),
+    calc(var(--parallax-y, 0px) * 0.15)
+  );
+}
+
+.sg-pathway-svg {
+  width: min(38%, 220px);
+  height: 60%;
+  filter: drop-shadow(0 0 10px rgba(201, 161, 90, 0.35));
+}
+
+.sg-pathway-svg__stroke {
+  animation: sg-pathway-glow var(--duration-ambient) var(--ease-in-out-soft) infinite alternate;
+}
+
+@keyframes sg-pathway-glow {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+
+/* ---- Foreground vegetation ---- */
+.sg-garden__vegetation {
+  transform: translate(
+    calc(var(--parallax-x, 0px) * 0.6),
+    calc(var(--parallax-y, 0px) * 0.6)
+  );
+}
+
+.sg-vegetation-placeholder {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -4%;
+  height: 30%;
+}
+
+.sg-leaf {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    var(--color-midnight-900) 0%,
+    var(--color-violet-700) 100%
+  );
+  border-radius: 0% 90% 0% 90% / 0% 90% 0% 90%;
+  opacity: 0.92;
+}
+
+.sg-leaf--left-1 { left: -4%; width: 34%; height: 100%; border-radius: 0 90% 0 60%; }
+.sg-leaf--left-2 { left: 14%; width: 20%; height: 62%; border-radius: 0 70% 0 40%; }
+.sg-leaf--right-1 { right: -4%; width: 34%; height: 95%; border-radius: 90% 0 60% 0; }
+.sg-leaf--right-2 { right: 14%; width: 20%; height: 58%; border-radius: 70% 0 40% 0; }
+
+/* ---- Responsive: intentional mobile composition, not a shrink ----
+   Mobile keeps the moonlight + pathway (the emotional focal point)
+   prominent and simplifies the tree line so nothing crowds the title. */
+@media (max-width: 599px) {
+  .sg-trees-placeholder {
+    height: 30%;
+    opacity: 0.6;
+  }
+
+  .sg-vegetation-placeholder {
+    height: 22%;
+  }
+
+  .sg-pathway-svg {
+    width: 55%;
+    height: 46%;
+  }
+
+  .sg-garden__moonlight {
+    background: radial-gradient(
+      ellipse 80% 35% at 50% 6%,
+      rgba(243, 231, 206, 0.32) 0%,
+      rgba(201, 161, 90, 0.12) 40%,
+      transparent 72%
+    );
+  }
+}
+
+@media (min-width: 1024px) {
+  .sg-pathway-svg {
+    height: 70%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-garden__moonlight,
+  .sg-pathway-svg__stroke {
+    animation: none;
+  }
+
+  .sg-garden__layer {
+    transform: none !important;
+  }
+}

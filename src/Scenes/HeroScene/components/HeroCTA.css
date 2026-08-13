@@ -1,0 +1,47 @@
+.sg-hero-cta {
+  position: relative;
+  display: inline-flex;
+  opacity: 0;
+  animation: sg-hero-cta-rise-in var(--duration-slow) var(--ease-soft) forwards;
+  animation-delay: 950ms;
+}
+
+@keyframes sg-hero-cta-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Ambient glow sitting behind the button — subtle, slow pulse.
+   Kept separate from Button's own hover glow so the button component
+   itself stays generic/reusable, not hero-specific. */
+.sg-hero-cta__glow {
+  position: absolute;
+  inset: -18px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(
+    circle,
+    rgba(232, 169, 176, 0.35) 0%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  z-index: -1;
+  animation: sg-cta-glow-pulse var(--duration-ambient) var(--ease-in-out-soft) infinite alternate;
+}
+
+@keyframes sg-cta-glow-pulse {
+  from { opacity: 0.5; }
+  to { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-hero-cta__glow {
+    animation: none;
+    opacity: 0.65;
+  }
+}

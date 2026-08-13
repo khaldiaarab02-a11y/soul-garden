@@ -1,0 +1,66 @@
+.sg-particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sg-particle,
+.sg-firefly {
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Slow rising motes of light. */
+.sg-particle {
+  background: var(--color-lavender-100);
+  box-shadow: 0 0 6px 1px rgba(233, 224, 250, 0.55);
+  opacity: 0;
+  animation-name: sg-particle-rise;
+  animation-timing-function: var(--ease-in-out-soft);
+  animation-iteration-count: infinite;
+}
+
+@keyframes sg-particle-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-90px);
+    opacity: 0;
+  }
+}
+
+/* Warmer, flickering firefly lights — stay closer to the ground. */
+.sg-firefly {
+  background: var(--color-gold-300);
+  box-shadow: 0 0 8px 2px rgba(221, 190, 132, 0.6);
+  opacity: 0.15;
+  animation-name: sg-firefly-flicker;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes sg-firefly-flicker {
+  0%, 100% { opacity: 0.15; transform: translate(0, 0) scale(0.9); }
+  30% { opacity: 0.85; transform: translate(3px, -4px) scale(1); }
+  55% { opacity: 0.35; transform: translate(-2px, -2px) scale(0.95); }
+  80% { opacity: 0.7; transform: translate(2px, -6px) scale(1); }
+}
+
+@media (max-width: 599px) {
+  /* Fewer visible motes read as "subtle" rather than "busy" on small
+     screens — the elements are still rendered (no layout shift when
+     motion is later toggled), just faded near-out via opacity. */
+  .sg-particle:nth-child(n + 7) {
+    opacity: 0 !important;
+    animation: none;
+  }
+}
