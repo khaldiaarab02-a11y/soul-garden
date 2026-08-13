@@ -3,6 +3,9 @@ import "./App.css";
 function App() {
   return (
     <main className="home-page">
+      <div className="moon" aria-hidden="true">
+  <div className="moon-glow"></div>
+</div>
       <section className="hero">
         <p className="eyebrow">رحلة إلى الداخل</p>
 
