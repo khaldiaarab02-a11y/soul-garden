@@ -1,0 +1,66 @@
+.journey {
+  min-height: 100vh;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.journey__header { max-width: var(--content-narrow); }
+.journey__intro { color: var(--color-text-secondary); }
+
+.journey__card {
+  max-width: var(--content-narrow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.journey__prompt {
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-primary);
+  max-width: 46ch;
+}
+
+.journey__breathing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.breathing-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-lavender-soft), var(--color-lavender));
+  box-shadow: var(--glow-lavender);
+  animation: breathe 6s ease-in-out infinite;
+}
+.breathing-circle.is-done { animation-play-state: paused; opacity: 0.7; }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.8); }
+  50% { transform: scale(1.15); }
+}
+
+.journey--done {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.journey__done-copy { max-width: 46ch; }
+
+.journey__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .journey__actions { flex-direction: column; width: 100%; max-width: 320px; }
+}
