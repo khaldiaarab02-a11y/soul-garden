@@ -1,0 +1,94 @@
+/* ============================================================
+   SOUL GARDEN — DESIGN TOKENS
+   The single source of truth for the visual language.
+   Do not use raw hex/px values outside this file where a
+   token already exists — reference the token instead.
+   ============================================================ */
+
+:root {
+  /* ---- Color: Palette ---- */
+  --color-ivory: #FAF6F0;
+  --color-ivory-soft: #F3ECE2;
+  --color-lavender: #C9B8E8;
+  --color-lavender-soft: #E4DAF5;
+  --color-blush: #F0C9D6;
+  --color-blush-soft: #F8E3EA;
+  --color-gold: #D9B872;
+  --color-gold-soft: #EFDDB0;
+  --color-twilight: #2C2140;
+  --color-twilight-deep: #1B1329;
+  --color-sage: #B7C9B4;
+  --color-moonlight: #E8E4F5;
+
+  /* ---- Color: Semantic ---- */
+  --color-bg: var(--color-twilight-deep);
+  --color-bg-elevated: var(--color-twilight);
+  --color-surface: rgba(250, 246, 240, 0.06);
+  --color-surface-strong: rgba(250, 246, 240, 0.1);
+  --color-border: rgba(217, 184, 114, 0.22);
+  --color-text-primary: var(--color-ivory);
+  --color-text-secondary: rgba(250, 246, 240, 0.72);
+  --color-text-muted: rgba(250, 246, 240, 0.5);
+  --color-accent: var(--color-gold);
+  --color-accent-soft: var(--color-gold-soft);
+  --color-focus: var(--color-moonlight);
+
+  /* ---- Typography ---- */
+  --font-display: 'Amiri', 'Cairo', serif;
+  --font-body: 'Cairo', -apple-system, sans-serif;
+
+  --fs-hero: clamp(2.2rem, 6vw, 4rem);
+  --fs-h1: clamp(1.9rem, 4.5vw, 3rem);
+  --fs-h2: clamp(1.5rem, 3.2vw, 2.1rem);
+  --fs-h3: clamp(1.2rem, 2.4vw, 1.5rem);
+  --fs-body-lg: clamp(1.05rem, 1.8vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.75rem;
+
+  --lh-tight: 1.2;
+  --lh-normal: 1.6;
+  --lh-relaxed: 1.85;
+
+  /* ---- Spacing (8px scale) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* ---- Radii ---- */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows & Glows ---- */
+  --shadow-soft: 0 20px 60px rgba(10, 6, 20, 0.45);
+  --shadow-card: 0 12px 32px rgba(10, 6, 20, 0.35);
+  --glow-gold: 0 0 40px rgba(217, 184, 114, 0.35);
+  --glow-lavender: 0 0 60px rgba(201, 184, 232, 0.25);
+
+  /* ---- Motion ---- */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 420ms;
+  --duration-slow: 900ms;
+  --duration-breath: 6s;
+
+  /* ---- Layout ---- */
+  --content-max: 1180px;
+  --content-narrow: 720px;
+  --header-height: 72px;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-height: 60px;
+  }
+}
