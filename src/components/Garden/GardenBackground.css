@@ -1,0 +1,70 @@
+.garden-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.garden-bg__glow-top {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  height: 60vh;
+  background: radial-gradient(ellipse at center, rgba(201, 184, 232, 0.22) 0%, transparent 70%);
+  filter: blur(20px);
+}
+
+.garden-bg__glow-bottom {
+  position: absolute;
+  bottom: -25%;
+  right: -10%;
+  width: 70vw;
+  height: 50vh;
+  background: radial-gradient(ellipse at center, rgba(217, 184, 114, 0.14) 0%, transparent 70%);
+  filter: blur(30px);
+}
+
+.garden-bg__mist {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(27, 19, 41, 0.5) 100%);
+}
+
+.garden-bg__vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 180px 40px rgba(10, 6, 20, 0.65);
+}
+
+.garden-bg__fireflies {
+  position: absolute;
+  inset: 0;
+}
+
+.firefly {
+  position: absolute;
+  left: var(--x);
+  bottom: -5%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold-soft);
+  box-shadow: 0 0 8px 2px rgba(217, 184, 114, 0.7);
+  opacity: 0;
+  animation: firefly-rise var(--dur, 10s) ease-in var(--delay, 0s) infinite;
+}
+
+@keyframes firefly-rise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.9; }
+  50% { transform: translateY(-45vh) translateX(20px); opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-95vh) translateX(-15px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firefly { animation: none; opacity: 0.5; }
+}
