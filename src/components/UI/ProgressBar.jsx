@@ -1,4 +1,7 @@
+import { useTranslation } from '../../i18n/i18n';
+
 export default function ProgressBar({ value, max, label }) {
+  const { t } = useTranslation();
   const pct = max > 0 ? Math.round((value / max) * 100) : 0;
   return (
     <div className="progress-bar">
@@ -9,7 +12,7 @@ export default function ProgressBar({ value, max, label }) {
         aria-valuenow={pct}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label={label || 'التقدّم'}
+        aria-label={label || t('progress.title')}
       >
         <div className="progress-bar__fill" style={{ width: `${pct}%` }} />
       </div>
