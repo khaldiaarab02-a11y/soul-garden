@@ -1,0 +1,59 @@
+.luna-encounter {
+  position: fixed;
+  inset-inline-end: var(--space-5);
+  inset-block-end: var(--space-6);
+  z-index: 60;
+  pointer-events: none;
+  max-width: min(320px, 78vw);
+  animation: lunaEncounterEnter var(--duration-slow) var(--ease-soft) both,
+    lunaEncounterExit var(--duration-slow) var(--ease-soft) 4.4s both;
+}
+
+.luna-encounter .luna-wrap {
+  gap: var(--space-2);
+}
+
+.luna-encounter .luna-bubble {
+  max-width: 260px;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fs-small);
+}
+
+@keyframes lunaEncounterEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes lunaEncounterExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.94);
+    filter: blur(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luna-encounter {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .luna-encounter {
+    inset-inline-end: var(--space-3);
+    inset-block-end: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  }
+}

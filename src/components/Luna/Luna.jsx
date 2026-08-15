@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { LUNA_STATES, LUNA_SIZES } from '../../data/lunaStates';
+import { useTranslation } from '../../i18n/i18n';
 import './Luna.css';
 
 const LUNA_IMG = `${import.meta.env.BASE_URL}images/characters/luna/luna-hero.png`;
@@ -22,6 +23,7 @@ export default function Luna({
   align = 'center',
 }) {
   const [entered, setEntered] = useState(false);
+  const { t } = useTranslation();
   const lunaState = LUNA_STATES[state] || LUNA_STATES.IDLE;
   const px = LUNA_SIZES[size] || LUNA_SIZES.md;
 
@@ -38,10 +40,10 @@ export default function Luna({
         className={`luna-figure ${lunaState.animationClass}`}
         style={{ '--luna-size': `${px}px`, '--luna-glow': lunaState.glowIntensity }}
         role="img"
-        aria-label="لونا، مرشدة حديقة الروح"
+        aria-label={t('luna.ariaLabel')}
       >
         <div className="luna-aura" aria-hidden="true" />
-        <img src={LUNA_IMG} alt="لونا" className="luna-image" draggable="false" />
+        <img src={LUNA_IMG} alt={t('luna.alt')} className="luna-image" draggable="false" />
         <span className="luna-soul-seed" aria-hidden="true" />
       </div>
       {message && (
