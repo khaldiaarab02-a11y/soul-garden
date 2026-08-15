@@ -33,7 +33,13 @@
   font-size: var(--fs-small);
   transition: background var(--duration-fast) var(--ease-soft), color var(--duration-fast) var(--ease-soft);
   min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
 }
+
+.nav__icon { display: inline; }
+.nav__text { display: inline; }
 
 .nav__link:hover { color: var(--color-text-primary); }
 
@@ -65,9 +71,18 @@
   }
   .nav__link {
     flex: 1;
+    flex-direction: column;
+    gap: 2px;
     text-align: center;
     padding: var(--space-2) var(--space-1);
     font-size: var(--fs-caption);
   }
+  .nav__icon { font-size: 1.05rem; }
   body { padding-bottom: 64px; }
+}
+
+/* Very narrow phones: keep icons, drop labels to avoid crowding/wrapping. */
+@media (max-width: 380px) {
+  .nav__text { display: none; }
+  .nav__icon { font-size: 1.25rem; }
 }
