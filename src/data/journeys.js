@@ -1,36 +1,56 @@
-// Reusable journey data structure.
-// A journey = { id, title, description, theme, duration, days: [ {id, title, exercises:[...]} ] }
+// Reusable journey data structure — bilingual.
+// A journey = { id, title:{ar,en}, description:{ar,en}, theme, duration,
+//   premium: boolean, days: [ {id, title:{ar,en}, intro:{ar,en}, exercises:[...]} ] }
 // Adding a new journey means adding a new object here — no component changes needed.
+// `premium: false` on a journey/day marks it as part of the free preview;
+// everything else requires an active subscription (see entitlements.js).
 
 export const JOURNEYS = [
   {
     id: 'awakening',
-    title: 'زرع الوعي',
-    description: 'المحطة الأولى في حديقة الروح — تعرّف على ما يعيش بداخلك اليوم.',
+    title: { ar: 'زرع الوعي', en: 'Planting Awareness' },
+    description: {
+      ar: 'المحطة الأولى في حديقة الروح — تعرّفي على ما يعيش بداخلكِ اليوم.',
+      en: 'The first stop in Soul Garden — get to know what lives inside you today.',
+    },
     theme: 'lavender',
     duration: 5,
+    premium: false, // first journey is part of the free preview
     days: [
       {
         id: 'day-1',
-        title: 'اليوم الأول: أين أنا الآن؟',
-        intro: 'لنبدأ بخطوة صغيرة: ملاحظة مشاعرك دون محاولة تغييرها.',
+        title: { ar: 'اليوم الأول: أين أنا الآن؟', en: 'Day One: Where am I now?' },
+        intro: {
+          ar: 'لنبدأ بخطوة صغيرة: ملاحظة مشاعركِ دون محاولة تغييرها.',
+          en: "Let's start with one small step: noticing your feelings without trying to change them.",
+        },
+        premium: false,
         exercises: [
           {
             id: 'ex-1-1',
             type: 'reflection',
-            prompt: 'صف بجملة أو جملتين كيف تشعر الآن، دون تبرير أو تحليل.',
-            placeholder: 'اليوم أشعر بـ...',
+            prompt: {
+              ar: 'صفي بجملة أو جملتين كيف تشعرين الآن، دون تبرير أو تحليل.',
+              en: 'Describe in a sentence or two how you feel right now, without justifying or analyzing it.',
+            },
+            placeholder: { ar: 'اليوم أشعر بـ...', en: 'Today I feel...' },
           },
           {
             id: 'ex-1-2',
             type: 'reflection',
-            prompt: 'ما هو الشيء الصغير الذي جعلك تبتسم هذا الأسبوع؟',
-            placeholder: 'اكتب هنا بحرية...',
+            prompt: {
+              ar: 'ما هو الشيء الصغير الذي جعلكِ تبتسمين هذا الأسبوع؟',
+              en: 'What small thing made you smile this week?',
+            },
+            placeholder: { ar: 'اكتبي هنا بحرية...', en: 'Write freely here...' },
           },
           {
             id: 'ex-1-3',
             type: 'breathing',
-            prompt: 'خذ ثلاثة أنفاس عميقة وبطيئة قبل أن تكمل رحلتك اليوم.',
+            prompt: {
+              ar: 'خذي ثلاثة أنفاس عميقة وبطيئة قبل أن تكملي رحلتكِ اليوم.',
+              en: "Take three deep, slow breaths before you continue today's journey.",
+            },
             duration: 30,
           },
         ],
