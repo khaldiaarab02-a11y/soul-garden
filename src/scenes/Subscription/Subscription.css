@@ -1,0 +1,104 @@
+.subscription {
+  padding-block: calc(var(--header-height) + var(--space-7)) var(--space-9);
+  max-width: var(--content-narrow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+}
+
+.subscription__header h1 { font-size: var(--fs-h1); margin-block-start: var(--space-2); }
+.subscription__subtitle {
+  color: var(--color-text-secondary);
+  max-width: 42ch;
+  margin-inline: auto;
+}
+
+.subscription__status,
+.subscription__benefits,
+.subscription__plans {
+  width: 100%;
+  text-align: start;
+}
+.subscription__status { text-align: center; }
+.subscription__status-label { color: var(--color-text-muted); font-size: var(--fs-caption); }
+.subscription__status-value {
+  font-family: var(--font-display);
+  color: var(--color-gold-soft);
+  font-size: var(--fs-h3);
+  margin-block-end: var(--space-2);
+}
+
+.subscription__benefits h2 { margin-block-end: var(--space-3); }
+.subscription__benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.subscription__benefits li {
+  position: relative;
+  padding-inline-start: var(--space-5);
+  color: var(--color-text-secondary);
+}
+.subscription__benefits li::before {
+  content: '✦';
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--color-gold);
+}
+.subscription__free-note {
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+}
+
+.subscription__plan-toggle {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  margin-inline: auto;
+  margin-block-end: var(--space-4);
+}
+.subscription__plan-btn {
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-soft), color var(--duration-fast) var(--ease-soft);
+}
+.subscription__plan-btn.is-active {
+  background: var(--color-gold-soft);
+  color: var(--color-twilight-deep);
+}
+
+.subscription__price {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-4);
+}
+.subscription__price-interval {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  margin-inline-start: 0.35em;
+}
+
+.subscription__not-configured {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--fs-caption);
+  margin-block-end: var(--space-3);
+}
+
+.subscription__plans .btn { display: block; width: 100%; }
