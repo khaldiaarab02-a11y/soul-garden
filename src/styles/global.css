@@ -16,6 +16,22 @@ html {
   }
 }
 
+/* Same effect, triggered by the in-app Settings toggle rather than the OS
+   preference — so it works even when the device itself doesn't report it. */
+html.prefers-reduced-motion-forced,
+html.prefers-reduced-motion-forced *,
+html.prefers-reduced-motion-forced *::before,
+html.prefers-reduced-motion-forced *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.text-size-large {
+  font-size: 112.5%;
+}
+
 body {
   margin: 0;
   background: radial-gradient(ellipse at 50% -10%, #3a2a55 0%, var(--color-twilight-deep) 55%);
@@ -72,7 +88,7 @@ img { max-width: 100%; display: block; }
 
 .skip-link {
   position: absolute;
-  right: var(--space-4);
+  inset-inline-end: var(--space-4);
   top: -60px;
   background: var(--color-gold);
   color: var(--color-twilight-deep);
