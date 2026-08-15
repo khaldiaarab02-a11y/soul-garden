@@ -43,3 +43,28 @@
 @media (max-width: 480px) {
   .progress-scene__actions { flex-direction: column; max-width: 320px; }
 }
+
+.progress-scene__achievements h2 { margin-block-end: var(--space-3); }
+.achievement-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0;
+}
+.achievement-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-body);
+}
+.achievement-chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 6px 1px var(--color-gold-soft);
+  flex-shrink: 0;
+}
