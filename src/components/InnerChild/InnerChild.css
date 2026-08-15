@@ -1,0 +1,95 @@
+.inner-child-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.inner-child-wrap.is-entered {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.inner-child-figure {
+  position: relative;
+  width: var(--ic-size, 150px);
+  height: var(--ic-size, 150px);
+  animation: ic-breathe 4.5s ease-in-out infinite;
+}
+
+.inner-child-aura {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-blush-soft) 0%, transparent 70%);
+  opacity: 0.55;
+  filter: blur(6px);
+}
+
+.inner-child-svg { position: relative; width: 100%; height: 100%; }
+.ic-body { fill: var(--color-lavender-soft); opacity: 0.9; }
+.ic-head { fill: var(--color-ivory); }
+.ic-head-glow {
+  fill: none;
+  stroke: var(--color-gold-soft);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.inner-child-sparkle {
+  position: absolute;
+  top: 8%;
+  inset-inline-end: 10%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold-soft);
+  box-shadow: 0 0 10px 2px var(--color-gold-soft);
+  animation: ic-twinkle 2.6s ease-in-out infinite;
+}
+
+/* Relationship / emotional state variants — subtle, not cartoonish */
+.ic--resting .inner-child-aura { opacity: 0.3; }
+.ic--shy .inner-child-figure { animation-duration: 5.5s; }
+.ic--curious .inner-child-sparkle { animation-duration: 1.6s; }
+.ic--sad .inner-child-aura { background: radial-gradient(circle, var(--color-lavender-soft) 0%, transparent 70%); opacity: 0.35; }
+.ic--safe .ic-head-glow { stroke: var(--color-sage); }
+.ic--hopeful .inner-child-aura { opacity: 0.7; }
+.ic--playful .inner-child-figure { animation: ic-breathe 2.8s ease-in-out infinite; }
+.ic--happy .inner-child-aura { opacity: 0.75; }
+.ic--celebrating .inner-child-sparkle { animation-duration: 1s; }
+
+.inner-child-label { text-align: center; }
+.inner-child-name {
+  font-family: var(--font-display);
+  color: var(--color-accent-soft);
+  font-size: 1.05rem;
+}
+.inner-child-message {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  max-width: 26ch;
+  margin-inline: auto;
+}
+
+@keyframes ic-breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.02); }
+}
+@keyframes ic-twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner-child-figure,
+  .inner-child-sparkle {
+    animation: none !important;
+  }
+}
+:root.prefers-reduced-motion-forced .inner-child-figure,
+:root.prefers-reduced-motion-forced .inner-child-sparkle {
+  animation: none !important;
+}
